@@ -1,0 +1,2 @@
+# Reference
+Monika, Sharma B, Awasthi SK. Mechanistic perspectives on antimalarial agents: from FDA-approved drugs to next-generation candidates. RSC Adv. 2026 Apr 17;16(22):20024-20038. doi: 10.1039/d5ra08585c. PMID: 42006802; PMCID: PMC13088779.
