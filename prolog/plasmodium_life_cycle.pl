@@ -3,6 +3,16 @@
 % Stages: Sporozoite → Hepatic → Erythrocytic → Gametocyte
 % ============================================================
 
+:- set_prolog_flag(encoding, utf8).
+
+% --- Predicates whose clauses are intentionally grouped by life-cycle
+% --- section rather than by predicate, so declare them discontiguous.
+:- discontiguous morphology/3.
+:- discontiguous invasion_target/2.
+:- discontiguous trophozoite_property/3.
+:- discontiguous schizogony/2.
+:- discontiguous immune_evasion/3.
+
 % ============================================================
 % SPECIES & HOSTS
 % ============================================================
@@ -259,6 +269,12 @@ duffy_negative_population(west_african_descent, frequency(high)).
 
 resistant_to(homo_sapiens, vivax) :-
     duffy_negative(homo_sapiens).
+
+% A human from a predominantly Duffy-negative population lacks the DARC
+% receptor that P. vivax needs to invade RBCs. Modelled at population
+% granularity (the KB has no per-individual host model).
+duffy_negative(homo_sapiens) :-
+    duffy_negative_population(_, frequency(high)).
 
 % --- Preferred RBC Age ---
 preferred_rbc(falciparum, all_ages,            any_rbc).
@@ -541,7 +557,7 @@ gametocyte_protein(both,   pfs230,   role(membrane_complex_and_fertilisation)).
 gametocyte_protein(both,   pfs48_45, role(fertilisation_competence)).
 gametocyte_protein(female, pfs25,    role(post_fertilisation_zygote_surface)).
 gametocyte_protein(female, pfs28,    role(ookinete_surface_protein)).
-gametocyte_protein(female, hap2_egg, role(gamete_fusion_receptor)).
+gametocyte_protein(female, pfs47,    role(mosquito_immune_evasion)).
 gametocyte_protein(male,   pfhap2,   role(membrane_fusion_during_fertilisation)).
 gametocyte_protein(male,   pf14,     role(exflagellation_centre_formation)).
 
@@ -614,25 +630,25 @@ transmission_blocking_antibody(pfs25,    blocks_ookinete_in_mosquito).
 % SECTION 5 — SHARED DRUG TARGETS ACROSS STAGES
 % ============================================================
 
-drug_target(sporozoite_stage,   circumsporozoite_protein, drug(rts_s_vaccine)).
-drug_target(sporozoite_stage,   circumsporozoite_protein, drug(r21_matrix_m)).
+stage_drug_target(sporozoite_stage,   circumsporozoite_protein, drug(rts_s_vaccine)).
+stage_drug_target(sporozoite_stage,   circumsporozoite_protein, drug(r21_matrix_m)).
 
-drug_target(hepatic_stage,      cytochrome_bc1_complex,      drug(atovaquone)).
-drug_target(hepatic_stage,      fatty_acid_synthesis_ii,     drug(fosmidomycin)).
-drug_target(hepatic_stage,      8_aminoquinoline_target,     drug(primaquine)).
-drug_target(hepatic_stage,      8_aminoquinoline_target,     drug(tafenoquine)).
+stage_drug_target(hepatic_stage,      cytochrome_bc1_complex,      drug(atovaquone)).
+stage_drug_target(hepatic_stage,      fatty_acid_synthesis_ii,     drug(fosmidomycin)).
+stage_drug_target(hepatic_stage,      '8_aminoquinoline_target',     drug(primaquine)).
+stage_drug_target(hepatic_stage,      '8_aminoquinoline_target',     drug(tafenoquine)).
 
-drug_target(erythrocytic_stage, heme_detoxification,         drug(chloroquine)).
-drug_target(erythrocytic_stage, heme_detoxification,         drug(amodiaquine)).
-drug_target(erythrocytic_stage, heme_detoxification,         drug(lumefantrine)).
-drug_target(erythrocytic_stage, dihydrofolate_reductase,     drug(pyrimethamine)).
-drug_target(erythrocytic_stage, dihydropteroate_synthase,    drug(sulfadoxine)).
-drug_target(erythrocytic_stage, artemisinin_kelch13_axis,    drug(artemisinin)).
-drug_target(erythrocytic_stage, cytochrome_bc1,              drug(atovaquone)).
+stage_drug_target(erythrocytic_stage, heme_detoxification,         drug(chloroquine)).
+stage_drug_target(erythrocytic_stage, heme_detoxification,         drug(amodiaquine)).
+stage_drug_target(erythrocytic_stage, heme_detoxification,         drug(lumefantrine)).
+stage_drug_target(erythrocytic_stage, dihydrofolate_reductase,     drug(pyrimethamine)).
+stage_drug_target(erythrocytic_stage, dihydropteroate_synthase,    drug(sulfadoxine)).
+stage_drug_target(erythrocytic_stage, artemisinin_kelch13_axis,    drug(artemisinin)).
+stage_drug_target(erythrocytic_stage, cytochrome_bc1,              drug(atovaquone)).
 
-drug_target(gametocyte_stage,   8_aminoquinoline_target,     drug(primaquine)).
-drug_target(gametocyte_stage,   8_aminoquinoline_target,     drug(tafenoquine)).
-drug_target(gametocyte_stage,   pfs48_45,                    drug(transmission_blocking_vaccine)).
+stage_drug_target(gametocyte_stage,   '8_aminoquinoline_target',     drug(primaquine)).
+stage_drug_target(gametocyte_stage,   '8_aminoquinoline_target',     drug(tafenoquine)).
+stage_drug_target(gametocyte_stage,   pfs48_45,                    drug(transmission_blocking_vaccine)).
 
 % Resistance mutations
 resistance_mutation(chloroquine,   pfcrt_k76t,        efflux_of_drug).
@@ -762,7 +778,7 @@ vaccine_candidate_proteins(Proteins) :-
 
 % --- All Stages a Drug Covers ---
 drug_stage_coverage(Drug, Stages) :-
-    findall(Stage, drug_target(Stage, _, drug(Drug)), Stages).
+    findall(Stage, stage_drug_target(Stage, _, drug(Drug)), Stages).
 
 % --- Species with Shortest Blood Cycle ---
 fastest_blood_cycle(Species) :-

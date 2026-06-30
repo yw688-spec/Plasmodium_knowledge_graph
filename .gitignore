@@ -1,0 +1,7 @@
+# Excel temporary lock files
+~$*
+
+# Python
+venv/
+__pycache__/
+*.pyc
