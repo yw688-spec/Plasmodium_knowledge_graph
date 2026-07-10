@@ -1,5 +1,5 @@
 :- set_prolog_flag(encoding, utf8).
-% Discontiguous predicate global declaration
+% Global discontiguous predicate unified declaration (all predicates deduplicated)
 :- discontiguous has_component/2.
 :- discontiguous has_surface_protein/2.
 :- discontiguous structure_difference/4.
@@ -13,28 +13,29 @@
 :- discontiguous entity_type/2.
 :- discontiguous entity_attribute/3.
 :- discontiguous kg_triple/3.
+:- discontiguous cell_type/1.
+:- discontiguous cell_feature/2.
+:- discontiguous cross_cell_comparison/4.
+:- discontiguous shared_structure/3.
+:- discontiguous unique_structure/3.
 
-% ========== Module 1: Organelle Classification System ==========
-% Organelle top-level category definition
+% ========== Module 1: Organelle Classification System (Original Core) ==========
+% Top-level organelle category definition
 organelle_class(apical_secretory_complex, "Apical Secretory Complex: Apical invasion organelles").
 organelle_class(endosymbiotic_organelle, "Endosymbiotic Organelles: Unique apicomplexan organelles").
 organelle_class(conserved_eukaryotic_core, "Conserved Eukaryotic Core Organelles").
 organelle_class(digestive_vacuole_system, "Digestive Vacuole System").
 organelle_class(host_remodeled_structure, "Host Erythrocyte Remodeled Structures (species-specific)").
 
-% Map each cell structure to its organelle class
+% Map cell structures to organelle class
 organelle_membership(rhoptry, apical_secretory_complex).
 organelle_membership(microneme, apical_secretory_complex).
 organelle_membership(dense_granule, apical_secretory_complex).
-
 organelle_membership(apicoplast, endosymbiotic_organelle).
 organelle_membership(mitochondrion, endosymbiotic_organelle).
-
 organelle_membership(nucleus, conserved_eukaryotic_core).
 organelle_membership(plasma_membrane, conserved_eukaryotic_core).
-
 organelle_membership(food_vacuole, digestive_vacuole_system).
-
 organelle_membership(maurer_clefts, host_remodeled_structure).
 organelle_membership(knob_structure, host_remodeled_structure).
 organelle_membership(schuffner_dots, host_remodeled_structure).
@@ -56,7 +57,7 @@ class_description(digestive_vacuole_system,
 class_description(host_remodeled_structure,
 "Parasite-induced membranous puncta or membrane protrusions inside infected red blood cells; morphological markers for microscopic species identification across Plasmodium spp.").
 
-% Query helper: List all components under one organelle class for target species
+% Organelle classification query helper
 list_organelles_by_class(Species, ClassID, OrganelleList) :-
     findall(Comp, (
         has_component(Species, Comp),
@@ -74,38 +75,117 @@ print_organelle_classification(Species) :-
     fail.
 print_organelle_classification(_).
 
-% ========== Module 2: Knowledge Graph Export Core Predicates ==========
-% Assign label (node type) to every entity for KG
+% ========== Module 2: New Cross-Cell Comparison Module (Prokaryote / Eukaryote / Plasmodium) ==========
+% Define three core cell type entities
+cell_type(prokaryote).
+cell_type(canonical_eukaryote).
+cell_type(plasmodium_apicomplexan).
+
+% Global feature summary for each cell type
+cell_feature(prokaryote, "No membrane-bound nucleus; circular single chromosome; no organelles; 70S ribosomes; cell wall (peptidoglycan)").
+cell_feature(canonical_eukaryote, "Membrane-bound nucleus; linear chromosomes; multiple membrane organelles (mitochondria, ER, Golgi); 80S ribosomes; no peptidoglycan wall").
+cell_feature(plasmodium_apicomplexan, "Eukaryotic base with secondary endosymbiotic apicoplast; reduced mitochondria; specialized apical secretory organelles; host-remodeled RBC structures; lacks ER/Golgi classical stacks in blood stages").
+
+% Shared core structures between two cell types
+shared_structure(prokaryote, canonical_eukaryote, [plasma_membrane, ribosome, genomic_dna, cytoplasm]).
+shared_structure(prokaryote, plasmodium_apicomplexan, [plasma_membrane, ribosome, genomic_dna, cytoplasm]).
+shared_structure(canonical_eukaryote, plasmodium_apicomplexan, [nucleus, mitochondrion, plasma_membrane, 80S_ribosome, endomembrane_basic]).
+
+% Unique structural features exclusive to each cell type
+unique_structure(prokaryote, prok_unique, ["circular bacterial chromosome", "peptidoglycan cell wall", "plasmids", "70S ribosomes only", "no membrane organelles"]).
+unique_structure(canonical_eukaryote, euk_unique, ["rough/smooth ER stacks", "canonical Golgi apparatus", "lysosomes", "peroxisomes", "centrioles"]).
+unique_structure(plasmodium_apicomplexan, plasmod_unique, ["apicoplast (four-membrane plastid)", "rhoptry/microneme/dense granule apical complex", "host RBC remodeling dots/clefts/knobs", "reduced degenerate mitochondrion", "food vacuole for hemoglobin digestion"]).
+
+% Dimensioned comparison facts: Plasmodium vs Prokaryote
+cross_cell_comparison(plasmodium_apicomplexan, prokaryote, nucleus_status,
+"Plasmodium has a membrane-bound haploid nucleus (eukaryotic trait); prokaryotes lack nuclei and carry circular naked DNA").
+cross_cell_comparison(plasmodium_apicomplexan, prokaryote, organelle_complement,
+"Plasmodium contains multiple specialized membrane organelles (apicoplast, mitochondrion, apical secretory organelles); prokaryotes have zero membrane-bound organelles").
+cross_cell_comparison(plasmodium_apicomplexan, prokaryote, ribosome_size,
+"Plasmodium uses 80S cytoplasmic ribosomes; prokaryotes only express 70S ribosomes").
+cross_cell_comparison(plasmodium_apicomplexan, prokaryote, cell_wall,
+"Plasmodium has no peptidoglycan cell wall; most prokaryotes have peptidoglycan cell walls; apicoplast inner membrane traces bacterial peptidoglycan synthesis pathway").
+cross_cell_comparison(plasmodium_apicomplexan, prokaryote, genome_architecture,
+"Plasmodium nuclear genome is linear split chromosomes; prokaryotes have one circular main chromosome plus plasmids").
+
+% Dimensioned comparison facts: Plasmodium vs Canonical Animal Eukaryote
+cross_cell_comparison(plasmodium_apicomplexan, canonical_eukaryote, endosymbiotic_organelles,
+"Plasmodium possesses an extra secondary endosymbiotic organelle apicoplast absent from animal eukaryotes; plasmodium mitochondrion is highly reduced with truncated genome").
+cross_cell_comparison(plasmodium_apicomplexan, canonical_eukaryote, apical_invasion_organelles,
+"Plasmodium has rhoptries, micronemes, dense granules for host cell invasion; canonical animal eukaryotes lack apical secretory complex").
+cross_cell_comparison(plasmodium_apicomplexan, canonical_eukaryote, digestive_compartment,
+"Plasmodium develops specialized food vacuole to degrade host hemoglobin and form hemozoin; animal eukaryotes use lysosomes for digestion without heme crystallization").
+cross_cell_comparison(plasmodium_apicomplexan, canonical_eukaryote, host_remodeling_structures,
+"Intraerythrocytic Plasmodium generates species-specific RBC remodeling structures (knobs, dots, clefts); free-living animal cells do not remodel foreign host cell membranes").
+cross_cell_comparison(plasmodium_apicomplexan, canonical_eukaryote, classical_endomembrane,
+"Blood-stage Plasmodium loses stacked ER and Golgi cisternae; canonical eukaryotes maintain prominent rough ER and Golgi complex for secretion").
+
+% Bidirectional cross-cell comparison helper
+cross_cell_comparison_bi(TypeA, TypeB, Dim, Desc) :- cross_cell_comparison(TypeA, TypeB, Dim, Desc).
+cross_cell_comparison_bi(TypeA, TypeB, Dim, Desc) :- cross_cell_comparison(TypeB, TypeA, Dim, Desc).
+
+% Cell type report & comparison query predicates
+print_cell_type_profile(CellType) :-
+    cell_feature(CellType, FeatureSummary),
+    format("~n==== Cell Type Profile: ~w ====~nSummary: ~s~n", [CellType, FeatureSummary]),
+    findall(UniqueList, unique_structure(CellType, _, UniqueList), Uniques),
+    format("Unique structures: ~w~n", [Uniques]),
+    fail.
+print_cell_type_profile(_).
+
+compare_cell_types(TypeA, TypeB) :-
+    format("~n==== Comparison Between ~w and ~w ====~n", [TypeA, TypeB]),
+    (shared_structure(TypeA, TypeB, Shared) ->
+        format("Shared core structures: ~w~n", [Shared])
+    ; format("No shared structure records found~n")),
+    findall(diff(Dimension, Detail), cross_cell_comparison_bi(TypeA, TypeB, Dimension, Detail), AllDiffs),
+    format("Structural & functional differences: ~w~n", [AllDiffs]).
+
+full_plasmodium_vs_all_cell_types(Species) :-
+    format("~n### Cross-Cell Comparison Report for ~w ###~n", [Species]),
+    format("This organism belongs to cell type: plasmodium_apicomplexan~n"),
+    compare_cell_types(plasmodium_apicomplexan, prokaryote),
+    compare_cell_types(plasmodium_apicomplexan, canonical_eukaryote).
+
+% ========== Module 3: Knowledge Graph Export Core Predicates (Unified Extended) ==========
+% Assign entity node type for all KG entities
 entity_type(S, species) :- species(S).
 entity_type(C, cell_component) :- has_component(_, C).
 entity_type(P, surface_protein) :- has_surface_protein(_, P).
 entity_type(ClassID, organelle_class) :- organelle_class(ClassID, _).
 entity_type(FamShort, protein_family) :- protein_family(_, FamShort, _).
+entity_type(CT, cell_type) :- cell_type(CT).
 
-% Extract all attribute key-value pairs of single entity (KG node properties)
+% Node attribute key-value pairs
 entity_attribute(Comp, "feature_description", Desc) :- structure_feature(Comp, Desc).
 entity_attribute(Prot, "protein_function", Desc) :- protein_function(Prot, Desc).
 entity_attribute(ClassID, "class_full_name", Name) :- organelle_class(ClassID, Name).
 entity_attribute(ClassID, "class_function_summary", Desc) :- class_description(ClassID, Desc).
 entity_attribute(Protein, "family_full_description", Desc) :- protein_family(Protein, _, Desc).
+entity_attribute(CellType, "cell_class_summary", Desc) :- cell_feature(CellType, Desc).
 
-% Standard KG triple format (Subject, Object, RelationLabel) for edge generation
+% Standard KG triple edges (Subject, Object, RelationLabel)
 kg_triple(Subject, Object, "HAS_COMPONENT") :- has_component(Subject, Object).
 kg_triple(Subject, Object, "HAS_SURFACE_PROTEIN") :- has_surface_protein(Subject, Object).
 kg_triple(Component, Class, "BELONGS_TO_ORGANELLE_CLASS") :- organelle_membership(Component, Class).
 kg_triple(Protein, FamilyShortID, "BELONGS_TO_PROTEIN_FAMILY") :- protein_family(Protein, FamilyShortID, _).
 kg_triple(SpeciesA, SpeciesB, "MORPHOLOGY_DIFF_FROM") :- structure_difference(SpeciesA, SpeciesB, _, _).
+kg_triple(TypeA, TypeB, "SHARES_CELL_STRUCTURES") :- shared_structure(TypeA, TypeB, _).
+kg_triple(TypeA, StructList, "HAS_SHARED_COMPONENTS") :- shared_structure(TypeA, TypeB, StructList).
+kg_triple(CellType, UniqueID, "POSSESSES_UNIQUE_STRUCTURES") :- unique_structure(CellType, UniqueID, _).
+kg_triple(TypeA, TypeB, "CELL_DIFF_FROM") :- cross_cell_comparison(TypeA, TypeB, _, _).
+kg_triple(plasmodium_apicomplexan, Species, "SPECIES_INSTANCE_OF") :- species(Species).
 
-% ========== Module 3: Original Core Knowledge Base ==========
-% Section 1: Species declarations (5 main human-infective Plasmodium)
+% ========== Module 4: Original Core Malaria Knowledge Base (Deduplicated Facts) ==========
+% Section 1: Human-infective Plasmodium species
 species(plasmodium_falciparum).
 species(plasmodium_vivax).
 species(plasmodium_ovale).
 species(plasmodium_malariae).
 species(plasmodium_knowlesi).
 
-% Section 2: has_component/2 - Cell structures possessed by each species
-% Plasmodium falciparum
+% Section 2: Cellular components owned by each Plasmodium species
+% P. falciparum
 has_component(plasmodium_falciparum, plasma_membrane).
 has_component(plasmodium_falciparum, nucleus).
 has_component(plasmodium_falciparum, mitochondrion).
@@ -118,7 +198,7 @@ has_component(plasmodium_falciparum, maurer_clefts).
 has_component(plasmodium_falciparum, knob_structure).
 has_component(plasmodium_falciparum, parasitophorous_vacuole_membrane).
 
-% Plasmodium vivax
+% P. vivax
 has_component(plasmodium_vivax, plasma_membrane).
 has_component(plasmodium_vivax, nucleus).
 has_component(plasmodium_vivax, mitochondrion).
@@ -131,7 +211,7 @@ has_component(plasmodium_vivax, schuffner_dots).
 has_component(plasmodium_vivax, caveola_vesicle_complex).
 has_component(plasmodium_vivax, parasitophorous_vacuole_membrane).
 
-% Plasmodium ovale
+% P. ovale
 has_component(plasmodium_ovale, plasma_membrane).
 has_component(plasmodium_ovale, nucleus).
 has_component(plasmodium_ovale, mitochondrion).
@@ -143,7 +223,7 @@ has_component(plasmodium_ovale, food_vacuole).
 has_component(plasmodium_ovale, james_dots).
 has_component(plasmodium_ovale, parasitophorous_vacuole_membrane).
 
-% Plasmodium malariae
+% P. malariae
 has_component(plasmodium_malariae, plasma_membrane).
 has_component(plasmodium_malariae, nucleus).
 has_component(plasmodium_malariae, mitochondrion).
@@ -155,7 +235,7 @@ has_component(plasmodium_malariae, food_vacuole).
 has_component(plasmodium_malariae, ziemann_dots).
 has_component(plasmodium_malariae, parasitophorous_vacuole_membrane).
 
-% Plasmodium knowlesi
+% P. knowlesi
 has_component(plasmodium_knowlesi, plasma_membrane).
 has_component(plasmodium_knowlesi, nucleus).
 has_component(plasmodium_knowlesi, mitochondrion).
@@ -167,7 +247,7 @@ has_component(plasmodium_knowlesi, food_vacuole).
 has_component(plasmodium_knowlesi, sinton_mulligan_stippling).
 has_component(plasmodium_knowlesi, parasitophorous_vacuole_membrane).
 
-% Section3: has_surface_protein/2 - Surface antigens expressed by each Plasmodium
+% Section3: Species-specific surface proteins
 % P. falciparum
 has_surface_protein(plasmodium_falciparum, pfemp1).
 has_surface_protein(plasmodium_falciparum, pfmsp1).
@@ -202,7 +282,7 @@ has_surface_protein(plasmodium_knowlesi, pkmsp1).
 has_surface_protein(plasmodium_knowlesi, pkama1).
 has_surface_protein(plasmodium_knowlesi, pksicavar).
 
-% Section4: protein_family/3 - Protein family classification
+% Section4: Surface protein family classification
 % P. falciparum
 protein_family(pfemp1, var_antigen, "Variant cytoadhesive virulence antigen family (PfEMP1)").
 protein_family(pfmsp1, msp1, "Merozoite Surface Protein 1 family").
@@ -237,7 +317,7 @@ protein_family(pkmsp1, msp1, "Merozoite Surface Protein 1 family").
 protein_family(pkama1, ama1, "Apical Membrane Antigen 1 family").
 protein_family(pksicavar, var_antigen, "SICAvar variant antigen (PfEMP1 functional homolog)").
 
-% Section5: protein_function/2 - Biological function of single surface protein
+% Section5: Biological function of each surface protein
 protein_function(pfemp1,
 "P. falciparum Erythrocyte Membrane Protein 1; mediates cytoadherence to host vascular endothelium and immune evasion via antigenic variation").
 protein_function(pfmsp1,
@@ -287,7 +367,7 @@ protein_function(pkama1,
 protein_function(pksicavar,
 "Schizont-infected cell agglutination variant antigen (SICAvar); mediates clonal antigenic variation; its cytoadhesive function is less characterized than PfEMP1").
 
-% Section6: structure_feature/2 - Morphology & function of single cell component
+% Section6: Morphology & functional features of single cell components
 structure_feature(plasma_membrane,
 "Lipid bilayer enclosing the parasite body; displays surface antigens and nutrient/ion transporters").
 structure_feature(nucleus,
@@ -321,7 +401,7 @@ structure_feature(ziemann_dots,
 structure_feature(sinton_mulligan_stippling,
 "Fine reddish cytoplasmic puncta within infected erythrocytes; historically described morphological feature associated with Plasmodium knowlesi infection").
 
-% Section7: structure_difference/4 - Morphological differences between species
+% Section7: Morphological differences between Plasmodium species
 structure_difference(plasmodium_falciparum, plasmodium_vivax,
     infected_erythrocyte_inclusions,
     "P. falciparum produces Maurer clefts and knob structures; P. vivax develops Schüffner’s dots derived from caveola–vesicle complexes").
@@ -356,31 +436,38 @@ structure_difference(plasmodium_malariae, plasmodium_knowlesi,
     morphological_similarity,
     "The two species are nearly indistinguishable under light microscopy; species confirmation requires molecular diagnostic assays").
 
-% Bidirectional difference helper (only for local query, filter out during KG export)
+% Bidirectional intraspecies morphology difference helper
 structure_difference_bi(A, B, Part, Detail) :-
     structure_difference(A, B, Part, Detail).
 structure_difference_bi(A, B, Part, Detail) :-
     structure_difference(B, A, Part, Detail).
 
-% ========== Local Query Helper Predicates (Not for KG export) ==========
+% ========== Module 5: Universal Local Query Helper Predicates ==========
 list_components(Species, Components) :-
     findall(C, has_component(Species, C), Components).
+
 list_surface_proteins(Species, Proteins) :-
     findall(P, has_surface_protein(Species, P), Proteins).
+
 query_protein_family(Protein, ShortFamily, FullFamily) :-
     protein_family(Protein, ShortFamily, FullFamily).
+
 list_protein_families(Species, ProteinFamilyList) :-
     findall(prot_fam(P, FamShort, FamFull),
             (has_surface_protein(Species, P), protein_family(P, FamShort, FamFull)),
             ProteinFamilyList).
+
 compare_species(SpeciesA, SpeciesB, Differences) :-
     findall(diff(Part, Detail),
             structure_difference_bi(SpeciesA, SpeciesB, Part, Detail),
             Differences).
+
 query_protein_function(Protein, Function) :-
     protein_function(Protein, Function).
+
 list_all_species(SpeciesList) :-
     findall(S, species(S), SpeciesList).
+
 full_profile(Species) :-
     format("~n=== Profile of ~w ===~n", [Species]),
     list_components(Species, Comps),
