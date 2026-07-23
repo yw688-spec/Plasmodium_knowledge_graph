@@ -171,7 +171,7 @@ kg_triple(Component, Class, "BELONGS_TO_ORGANELLE_CLASS") :- organelle_membershi
 kg_triple(Protein, FamilyShortID, "BELONGS_TO_PROTEIN_FAMILY") :- protein_family(Protein, FamilyShortID, _).
 kg_triple(SpeciesA, SpeciesB, "MORPHOLOGY_DIFF_FROM") :- structure_difference(SpeciesA, SpeciesB, _, _).
 kg_triple(TypeA, TypeB, "SHARES_CELL_STRUCTURES") :- shared_structure(TypeA, TypeB, _).
-kg_triple(TypeA, StructList, "HAS_SHARED_COMPONENTS") :- shared_structure(TypeA, TypeB, StructList).
+kg_triple(TypeA, StructList, "HAS_SHARED_COMPONENTS") :- shared_structure(TypeA, _, StructList).
 kg_triple(CellType, UniqueID, "POSSESSES_UNIQUE_STRUCTURES") :- unique_structure(CellType, UniqueID, _).
 kg_triple(TypeA, TypeB, "CELL_DIFF_FROM") :- cross_cell_comparison(TypeA, TypeB, _, _).
 kg_triple(plasmodium_apicomplexan, Species, "SPECIES_INSTANCE_OF") :- species(Species).

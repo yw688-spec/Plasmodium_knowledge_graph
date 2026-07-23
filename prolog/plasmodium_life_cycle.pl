@@ -635,8 +635,8 @@ stage_drug_target(sporozoite_stage,   circumsporozoite_protein, drug(r21_matrix_
 
 stage_drug_target(hepatic_stage,      cytochrome_bc1_complex,      drug(atovaquone)).
 stage_drug_target(hepatic_stage,      fatty_acid_synthesis_ii,     drug(fosmidomycin)).
-stage_drug_target(hepatic_stage,      '8_aminoquinoline_target',     drug(primaquine)).
-stage_drug_target(hepatic_stage,      '8_aminoquinoline_target',     drug(tafenoquine)).
+stage_drug_target(hepatic_stage,      aminoquinoline_8_target,     drug(primaquine)).
+stage_drug_target(hepatic_stage,      aminoquinoline_8_target,     drug(tafenoquine)).
 
 stage_drug_target(erythrocytic_stage, heme_detoxification,         drug(chloroquine)).
 stage_drug_target(erythrocytic_stage, heme_detoxification,         drug(amodiaquine)).
@@ -646,8 +646,8 @@ stage_drug_target(erythrocytic_stage, dihydropteroate_synthase,    drug(sulfadox
 stage_drug_target(erythrocytic_stage, artemisinin_kelch13_axis,    drug(artemisinin)).
 stage_drug_target(erythrocytic_stage, cytochrome_bc1,              drug(atovaquone)).
 
-stage_drug_target(gametocyte_stage,   '8_aminoquinoline_target',     drug(primaquine)).
-stage_drug_target(gametocyte_stage,   '8_aminoquinoline_target',     drug(tafenoquine)).
+stage_drug_target(gametocyte_stage,   aminoquinoline_8_target,     drug(primaquine)).
+stage_drug_target(gametocyte_stage,   aminoquinoline_8_target,     drug(tafenoquine)).
 stage_drug_target(gametocyte_stage,   pfs48_45,                    drug(transmission_blocking_vaccine)).
 
 % Resistance mutations
@@ -692,7 +692,7 @@ ploidy_at_stage(sporozoite_stage,   haploid).
 ploidy_at_stage(hepatic_stage,      haploid).
 ploidy_at_stage(erythrocytic_stage, haploid).
 ploidy_at_stage(gametocyte_stage,   haploid).
-ploidy_at_stage(mosquito_stage,     diploid).   % post-fertilisation zygote
+ploidy_at_stage(mosquito_stage,     diploid).   % zygote only; sporozoites revert to haploid after meiosis
 
 only_diploid_stage(mosquito_stage).             % fertilisation produces only diploid form
 
@@ -713,8 +713,9 @@ seeds_stage(erythrocytic_stage, erythrocytic_stage, via(erythrocytic_merozoite))
 sequesters(falciparum, erythrocytic_stage, microvasculature).
 sequesters(falciparum, gametocyte_stage,   bone_marrow).
 
-% No sequestration for P. vivax in either stage
-sequesters(vivax, _, _) :- fail.
+% P. vivax does not sequester (explicit negative for KG export)
+sequesters(vivax, erythrocytic_stage, none).
+sequesters(vivax, gametocyte_stage,   none).
 
 % --- Relapse Capability ---
 can_relapse(Species) :-

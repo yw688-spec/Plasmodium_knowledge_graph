@@ -66,9 +66,9 @@ full_moa_detail(chloroquine, review, 'Chloroquine is a weak alkaline lipophilic 
 % Target annotation from ChEMBL database
 full_moa_detail(chloroquine, chembl, 'Ferriprotoporphyrin IX binder, hemozoin polymerase inhibitor, vacuole acidification disruptor, weak PfCRT antagonist', 'ChEMBL Antimalarial Target Curation, 2025 Release').
 %Parasite developmental stage killing/inhibitory activity (unified English enumeration tags)
-drug_stage_effect(chloroquine, ring_stage, weak_bactericidal).
-drug_stage_effect(chloroquine, trophozoite, strong_bactericidal).
-drug_stage_effect(chloroquine, schizont, strong_bactericidal).
+drug_stage_effect(chloroquine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(chloroquine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(chloroquine, schizont, strong_plasmodicidal).
 drug_stage_effect(chloroquine, hypnozoite, no_effect).
 drug_stage_effect(chloroquine, gametocyte, weak_inhibit).
 %Classification of pharmaceutical compound preparations
@@ -172,11 +172,13 @@ guideline_ref(primaquine, 'Chinese Guidelines for Malaria Diagnosis and Treatmen
 drug_moa(primaquine, review, 'Clears hepatic hypnozoites and gametocytes; metabolites disrupt mitochondrial electron transport').
 drug_moa(primaquine, chembl, 'Antimalarial (Hypnozoitocidal / Gametocytocidal)').
 drug_target(primaquine, 'Mitochondrial electron transport chain (Cytochrome bc1 complex, ubiquinol)', chembl).
-drug_target_organism(primaquine, 'Plasmodium vivax/P.ovale/P.falciparum').
+drug_target_organism(primaquine, 'Plasmodium vivax').
+drug_target_organism(primaquine, 'Plasmodium ovale').
+drug_target_organism(primaquine, 'Plasmodium falciparum').
 drug_target_xref(primaquine, uniprot, 'Not yet established').
 drug_target_xref(primaquine, chembl, 'CHEMBL506').
 drug_action_type(primaquine, 'OXIDATIVE STRESS INDUCER').
-drug_resistance(primaquine, 'CYP2D6 metabolic polymorphism reduces efficacy (host factor); few reports of parasite-related resistance', '\\').
+drug_resistance(primaquine, 'CYP2D6 metabolic polymorphism reduces efficacy (host factor); few reports of parasite-related resistance', 'none').
 drug_warning(primaquine, 'Contraindicated in patients with G6PD deficiency  (causing severe hemolytic anemia); Methemoglobinemia Gastrointestinal discomfort;  Contraindicated during pregnancy').
 drug_indication(primaquine, 'malaria (max phase 4)').
 drug_indication(primaquine, 'Plasmodium falciparum malaria (max phase 3)').
@@ -214,7 +216,7 @@ drug_attr(hydroxychloroquine, iupac_name, '2-[4-[(7-chloroquinolin-4-yl)amino]pe
 drug_class(hydroxychloroquine, review, '4-Aminoquinoline').
 drug_class(hydroxychloroquine, cn, 'Quinolines').
 drug_class(hydroxychloroquine, atc, 'Aminoquinolines (P01BA)').
-drug_core_structure(hydroxychloroquine, '4-Aminoquinoline', 'WHO World Malaria Report 2023; Pharmacol Ther, 1993, 57(2-3): 203-235').
+drug_core_structure(hydroxychloroquine, '4-Aminoquinoline', '4-Aminoquinoline core scaffold', 'WHO World Malaria Report 2023; Pharmacol Ther, 1993, 57(2-3): 203-235').
 malaria_line_usage(hydroxychloroquine, 'Plasmodium falciparum', third_line, 'Full cross-resistance with chloroquine; only used as third-line agent in areas without confirmed resistance', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(hydroxychloroquine, 'Plasmodium vivax', second_line, 'Second-line blood schizonticide for vivax malaria in chloroquine-resistant regions; safer ocular profile than chloroquine', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(hydroxychloroquine, 'Plasmodium ovale', second_line, 'Active against erythrocytic stages of P. ovale; must be combined with primaquine for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -223,9 +225,9 @@ drug_synergy(hydroxychloroquine, primaquine, 'Hydroxychloroquine eliminates eryt
 drug_synergy(hydroxychloroquine, azithromycin, 'Dual blood-stage activity for intermittent preventive treatment in pregnancy; reduced teratogenic risk', 'N Engl J Med, 2018, 379(10): 917-927').
 full_moa_detail(hydroxychloroquine, review, 'As a weak-base 4-aminoquinoline analog, hydroxychloroquine accumulates in the acidic digestive vacuole of Plasmodium via proton trapping. It binds to ferriprotoporphyrin IX and competitively inhibits hemozoin polymerization, leading to accumulation of toxic free heme, which disrupts parasite membrane integrity and induces oxidative stress. The hydroxyethyl side chain reduces retinal tissue accumulation compared to chloroquine, resulting in lower ocular toxicity, while sharing identical cross-resistance profiles.', 'Slater AF. Pharmacol Ther, 1993, 57(2-3): 203-235').
 full_moa_detail(hydroxychloroquine, chembl, 'Hemozoin formation inhibitor; ferriprotoporphyrin IX binder; vacuolar pH modulator', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(hydroxychloroquine, ring_stage, weak_bactericidal).
-drug_stage_effect(hydroxychloroquine, trophozoite, strong_bactericidal).
-drug_stage_effect(hydroxychloroquine, schizont, strong_bactericidal).
+drug_stage_effect(hydroxychloroquine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(hydroxychloroquine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(hydroxychloroquine, schizont, strong_plasmodicidal).
 drug_stage_effect(hydroxychloroquine, hypnozoite, no_effect).
 drug_stage_effect(hydroxychloroquine, gametocyte, weak_inhibit).
 drug_combination_type(hydroxychloroquine, none).
@@ -247,7 +249,10 @@ guideline_ref(hydroxychloroquine, 'CDC Malaria Treatment Guidelines, 2024').
 drug_moa(hydroxychloroquine, review, 'Same as chloroquine: inhibits hemozoin formation').
 drug_moa(hydroxychloroquine, chembl, 'Hemozoin formation inhibitor').
 drug_target(hydroxychloroquine, 'Heme (ferriprotoporphyrin IX) Hemozoin formation', chembl).
-drug_target_organism(hydroxychloroquine, 'P. falciparum/P. malariae/P. vivax/P. ovale').
+drug_target_organism(hydroxychloroquine, 'Plasmodium falciparum').
+drug_target_organism(hydroxychloroquine, 'Plasmodium malariae').
+drug_target_organism(hydroxychloroquine, 'Plasmodium vivax').
+drug_target_organism(hydroxychloroquine, 'Plasmodium ovale').
 drug_target_xref(hydroxychloroquine, uniprot, 'The parasite-related mechanism is not yet established').
 drug_target_xref(hydroxychloroquine, chembl, 'CHEMBL1535').
 drug_action_type(hydroxychloroquine, 'INHIBITOR/ANTAGONIST').
@@ -289,7 +294,7 @@ drug_attr(sulfadoxine, iupac_name, '4-amino-N-(5,6-dimethoxypyrimidin-4-yl)benze
 drug_class(sulfadoxine, review, 'Sulfonamide').
 drug_class(sulfadoxine, cn, 'Antifolates').
 drug_class(sulfadoxine, atc, 'Sulfonamides （QJ01EQ）').
-drug_core_structure(sulfadoxine, 'Sulfonamide', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(25): 13944-13949').
+drug_core_structure(sulfadoxine, 'Sulfonamide', 'Sulfonamide core scaffold', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(25): 13944-13949').
 malaria_line_usage(sulfadoxine, 'Plasmodium falciparum', second_line, 'Used in combination with pyrimethamine as second-line intermittent preventive therapy; not recommended as monotherapy due to high resistance', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(sulfadoxine, 'Plasmodium vivax', third_line, 'Limited activity against P. vivax; only used in combination regimens for multidrug-resistant cases', 'Malar J, 2016, 15: 63').
 malaria_line_usage(sulfadoxine, 'Plasmodium ovale', third_line, 'No first-line indication; adjunctive use only in resistant cases', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -298,9 +303,9 @@ drug_synergy(sulfadoxine, pyrimethamine, 'Sequential blockade of de novo folate 
 drug_synergy(sulfadoxine, amodiaquine, 'Combination for seasonal malaria chemoprevention in children; complementary resistance profiles', 'Lancet, 2016, 388(10058): 2179-2188').
 full_moa_detail(sulfadoxine, review, 'Sulfadoxine is a structural analog of p-aminobenzoic acid (PABA) that competitively inhibits dihydropteroate synthase (DHPS), a rate-limiting enzyme in Plasmodium de novo folate biosynthesis. By blocking conversion of PABA to dihydropteroic acid, it disrupts pyrimidine nucleotide synthesis and parasite DNA replication. Human cells rely on dietary folate uptake rather than de novo synthesis, conferring selective parasite toxicity.', 'Triglia T et al. Proc Natl Acad Sci U S A, 1997, 94(25): 13944-13949').
 full_moa_detail(sulfadoxine, chembl, 'Dihydropteroate synthase inhibitor; antifolate antimalarial; folate biosynthesis antagonist', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(sulfadoxine, ring_stage, weak_bactericidal).
-drug_stage_effect(sulfadoxine, trophozoite, moderate_bactericidal).
-drug_stage_effect(sulfadoxine, schizont, moderate_bactericidal).
+drug_stage_effect(sulfadoxine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(sulfadoxine, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(sulfadoxine, schizont, moderate_plasmodicidal).
 drug_stage_effect(sulfadoxine, hypnozoite, no_effect).
 drug_stage_effect(sulfadoxine, gametocyte, moderate_inhibit).
 drug_combination_type(sulfadoxine, 'Fansidar').
@@ -364,7 +369,7 @@ drug_attr(pyrimethamine, iupac_name, '5-(4-chlorophenyl)-6-ethylpyrimidine-2,4-d
 drug_class(pyrimethamine, review, 'Diaminopyrimidine').
 drug_class(pyrimethamine, cn, 'Antifolates').
 drug_class(pyrimethamine, atc, 'Diaminopyrimidines (P01BD)').
-drug_core_structure(pyrimethamine, 'Diaminopyrimidine', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(4): 1124-1129').
+drug_core_structure(pyrimethamine, 'Diaminopyrimidine', 'Diaminopyrimidine core scaffold', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(4): 1124-1129').
 malaria_line_usage(pyrimethamine, 'Plasmodium falciparum', second_line, 'Core component of Fansidar for intermittent preventive treatment; monotherapy not recommended due to rapid resistance', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(pyrimethamine, 'Plasmodium vivax', second_line, 'Combined with sulfadoxine for second-line vivax malaria treatment', 'Malar J, 2016, 15: 63').
 malaria_line_usage(pyrimethamine, 'Plasmodium ovale', third_line, 'Limited activity; only used in combination regimens', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -373,9 +378,9 @@ drug_synergy(pyrimethamine, sulfadoxine, 'Synergistic sequential blockade of fol
 drug_synergy(pyrimethamine, sulfadiazine, 'First-line combination for toxoplasmosis; also shows activity against severe malaria', 'Clin Infect Dis, 2021, 73(12): e4281-e4290').
 full_moa_detail(pyrimethamine, review, 'Pyrimethamine selectively binds to the dihydrofolate reductase (DHFR) domain of Plasmodium bifunctional DHFR-thymidylate synthase, blocking reduction of dihydrofolate to tetrahydrofolate — an essential cofactor for thymidine and purine synthesis. Its higher affinity for parasite DHFR than human DHFR enables selective antiprotozoal activity. Stepwise point mutations in PfDHFR progressively reduce drug binding affinity.', 'Sirawaraporn W et al. Proc Natl Acad Sci U S A, 1997, 94(4): 1124-1129').
 full_moa_detail(pyrimethamine, chembl, 'Dihydrofolate reductase inhibitor; antifolate; thymidylate synthesis disruptor', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(pyrimethamine, ring_stage, weak_bactericidal).
-drug_stage_effect(pyrimethamine, trophozoite, moderate_bactericidal).
-drug_stage_effect(pyrimethamine, schizont, strong_bactericidal).
+drug_stage_effect(pyrimethamine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(pyrimethamine, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(pyrimethamine, schizont, strong_plasmodicidal).
 drug_stage_effect(pyrimethamine, hypnozoite, no_effect).
 drug_stage_effect(pyrimethamine, gametocyte, weak_inhibit).
 drug_combination_type(pyrimethamine, 'Fansidar').
@@ -439,7 +444,7 @@ drug_attr(mefloquine, iupac_name, '[2,8-bis(trifluoromethyl)quinolin-4-yl]-piper
 drug_class(mefloquine, review, 'Methanolquinoline').
 drug_class(mefloquine, cn, 'Quinolines').
 drug_class(mefloquine, atc, 'Methanolquinolines (P01BC)').
-drug_core_structure(mefloquine, 'Methanolquinoline', 'WHO World Malaria Report 2023; Mol Microbiol, 2005, 57(4): 913-926').
+drug_core_structure(mefloquine, 'Methanolquinoline', 'Methanolquinoline core scaffold', 'WHO World Malaria Report 2023; Mol Microbiol, 2005, 57(4): 913-926').
 malaria_line_usage(mefloquine, 'Plasmodium falciparum', second_line, 'Second-line treatment for uncomplicated falciparum malaria in ACT-limited settings; also used for chemoprophylaxis', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(mefloquine, 'Plasmodium vivax', second_line, 'Second-line blood schizonticide; requires combination with primaquine for radical cure', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(mefloquine, 'Plasmodium ovale', second_line, 'Active against erythrocytic stages; primaquine co-administration required for cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -448,9 +453,9 @@ drug_synergy(mefloquine, artesunate, 'Artesunate rapidly reduces parasite biomas
 drug_synergy(mefloquine, primaquine, 'Mefloquine clears blood-stage parasites; primaquine eliminates hypnozoites for radical cure of vivax malaria', 'N Engl J Med, 2019, 380(11): 1027-1038').
 full_moa_detail(mefloquine, review, 'Mefloquine is a lipophilic methanolquinoline that concentrates in the Plasmodium digestive vacuole. It binds to heme and inhibits hemozoin crystallization, causing toxic free heme accumulation. It also interacts with PfMDR1 transporter, modulating drug efflux and vacuolar drug concentration. Its long half-life supports single-dose regimens but increases resistance selection pressure.', 'Sidhu AB et al. Mol Microbiol, 2005, 57(4): 913-926').
 full_moa_detail(mefloquine, chembl, 'Hemozoin formation inhibitor; PfMDR1 modulator; blood schizonticide', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(mefloquine, ring_stage, moderate_bactericidal).
-drug_stage_effect(mefloquine, trophozoite, strong_bactericidal).
-drug_stage_effect(mefloquine, schizont, strong_bactericidal).
+drug_stage_effect(mefloquine, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(mefloquine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(mefloquine, schizont, strong_plasmodicidal).
 drug_stage_effect(mefloquine, hypnozoite, no_effect).
 drug_stage_effect(mefloquine, gametocyte, weak_inhibit).
 drug_combination_type(mefloquine, none).
@@ -514,7 +519,7 @@ drug_attr(atovaquone, iupac_name, '3-[4-(4-chlorophenyl)cyclohexyl]-4-hydroxynap
 drug_class(atovaquone, review, 'Naphthoquinone').
 drug_class(atovaquone, cn, 'Naphthoquinones').
 drug_class(atovaquone, atc, 'Other agents against amoebiasis and other protozoal diseases (P01AX)').
-drug_core_structure(atovaquone, 'Naphthoquinone', 'WHO World Malaria Report 2023; Antimicrob Agents Chemother, 2000, 44(8): 2100-2108').
+drug_core_structure(atovaquone, 'Naphthoquinone', 'Naphthoquinone core scaffold', 'WHO World Malaria Report 2023; Antimicrob Agents Chemother, 2000, 44(8): 2100-2108').
 malaria_line_usage(atovaquone, 'Plasmodium falciparum', first_line, 'First-line component of Malarone for uncomplicated falciparum malaria and chemoprophylaxis; never used as monotherapy', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(atovaquone, 'Plasmodium vivax', second_line, 'Used with proguanil for second-line vivax malaria treatment; primaquine added for radical cure', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(atovaquone, 'Plasmodium ovale', second_line, 'Active against erythrocytic stages; combined with primaquine for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -523,9 +528,9 @@ drug_synergy(atovaquone, proguanil, 'Atovaquone collapses mitochondrial membrane
 drug_synergy(atovaquone, azithromycin, 'Alternative combination for malaria prophylaxis in patients intolerant to standard regimens', 'J Travel Med, 2022, 29(7): taac078').
 full_moa_detail(atovaquone, review, 'Atovaquone is a lipophilic hydroxynaphthoquinone that selectively binds to the Qo oxidation pocket of the Plasmodium cytochrome bc1 complex (Complex III) in the mitochondrial electron transport chain. This binding blocks electron transfer to cytochrome c, collapses mitochondrial membrane potential, and inhibits pyrimidine biosynthesis via dihydroorotate dehydrogenase coupling. Single point mutations in PfCYTB can abolish binding and cause high-level resistance.', 'Korsinczky M et al. Antimicrob Agents Chemother, 2000, 44(8): 2100-2108').
 full_moa_detail(atovaquone, chembl, 'Cytochrome bc1 inhibitor; mitochondrial electron transport disruptor; dihydroorotate dehydrogenase suppressor', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(atovaquone, ring_stage, moderate_bactericidal).
-drug_stage_effect(atovaquone, trophozoite, strong_bactericidal).
-drug_stage_effect(atovaquone, schizont, strong_bactericidal).
+drug_stage_effect(atovaquone, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(atovaquone, trophozoite, strong_plasmodicidal).
+drug_stage_effect(atovaquone, schizont, strong_plasmodicidal).
 drug_stage_effect(atovaquone, hypnozoite, no_effect).
 drug_stage_effect(atovaquone, gametocyte, moderate_inhibit).
 drug_combination_type(atovaquone, 'Malarone').
@@ -588,7 +593,7 @@ drug_attr(proguanil, iupac_name, '(1E)-1-[amino-(4-chloroanilino)methylidene]-2-
 drug_class(proguanil, review, 'Biguanide').
 drug_class(proguanil, cn, 'Antifolates').
 drug_class(proguanil, atc, 'Biguanides (P01BB)').
-drug_core_structure(proguanil, 'Biguanide', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(4): 1124-1129').
+drug_core_structure(proguanil, 'Biguanide', 'Biguanide core scaffold', 'WHO World Malaria Report 2023; Proc Natl Acad Sci U S A, 1997, 94(4): 1124-1129').
 malaria_line_usage(proguanil, 'Plasmodium falciparum', first_line, 'First-line component of Malarone combination therapy; also used for standalone chemoprophylaxis in some regions', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(proguanil, 'Plasmodium vivax', second_line, 'Combined with atovaquone for second-line vivax malaria treatment', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(proguanil, 'Plasmodium ovale', second_line, 'Active against erythrocytic stages; adjunctive role in combination regimens', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -597,9 +602,9 @@ drug_synergy(proguanil, atovaquone, 'Proguanil enhances atovaquone-induced mitoc
 drug_synergy(proguanil, chloroquine, 'Historical combination for malaria prophylaxis; reduced efficacy due to widespread resistance', 'Malar J, 2018, 17(1): 320').
 full_moa_detail(proguanil, review, 'Proguanil is a prodrug metabolized by hepatic CYP2C19 to its active form cycloguanil, a dihydrofolate reductase inhibitor that blocks Plasmodium tetrahydrofolate synthesis and DNA replication. It also exerts direct, DHFR-independent synergistic effects with atovaquone by lowering the threshold for mitochondrial membrane depolarization. Host CYP2C19 poor metabolizers have reduced drug activation and treatment failure risk.', 'Herrlin K et al. Clin Pharmacol Ther, 2000, 68(2): 189-198').
 full_moa_detail(proguanil, chembl, 'Dihydrofolate reductase inhibitor (prodrug); mitochondrial sensitizer; antifolate biguanide', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(proguanil, ring_stage, weak_bactericidal).
-drug_stage_effect(proguanil, trophozoite, moderate_bactericidal).
-drug_stage_effect(proguanil, schizont, moderate_bactericidal).
+drug_stage_effect(proguanil, ring_stage, weak_plasmodicidal).
+drug_stage_effect(proguanil, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(proguanil, schizont, moderate_plasmodicidal).
 drug_stage_effect(proguanil, hypnozoite, no_effect).
 drug_stage_effect(proguanil, gametocyte, weak_inhibit).
 drug_combination_type(proguanil, 'Malarone').
@@ -661,7 +666,7 @@ drug_attr(quinine, iupac_name, '(R)-[(2S,4S,5R)-5-ethenyl-1-azabicyclo[2.2.2]oct
 drug_class(quinine, review, 'Methanolquinoline (alkaloid)').
 drug_class(quinine, cn, 'Quinolines').
 drug_class(quinine, atc, 'Quinine and derivatives (M09AA)').
-drug_core_structure(quinine, 'Methanolquinoline alkaloid', 'WHO World Malaria Report 2023; Mol Microbiol, 2004, 52(4): 985-997').
+drug_core_structure(quinine, 'Methanolquinoline alkaloid', 'Methanolquinoline alkaloid core scaffold', 'WHO World Malaria Report 2023; Mol Microbiol, 2004, 52(4): 985-997').
 malaria_line_usage(quinine, 'Plasmodium falciparum', second_line, 'Second-line parenteral treatment for severe falciparum malaria; also used for uncomplicated multidrug-resistant malaria', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(quinine, 'Plasmodium vivax', second_line, 'Second-line treatment for severe vivax malaria; combined with primaquine for radical cure', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(quinine, 'Plasmodium ovale', second_line, 'Active against erythrocytic stages; primaquine required for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -670,9 +675,9 @@ drug_synergy(quinine, doxycycline, 'Quinine provides rapid parasiticidal effect;
 drug_synergy(quinine, clindamycin, 'Alternative combination for pregnant women and children where doxycycline is contraindicated', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 full_moa_detail(quinine, review, 'Quinine is a natural cinchona alkaloid that acts primarily as a blood schizonticide. It intercalates into heme and inhibits hemozoin crystallization in the digestive vacuole, causing toxic free heme accumulation and parasite membrane damage. It also weakly intercalates into parasite DNA, inhibiting nucleic acid synthesis. Multiple transporters including PfCRT, PfMDR1 and PfNHE contribute to low-level resistance via altered vacuolar pH and drug efflux.', 'Ferdig MT et al. Mol Microbiol, 2004, 52(4): 985-997').
 full_moa_detail(quinine, chembl, 'Hemozoin formation inhibitor; DNA intercalator; natural alkaloid antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(quinine, ring_stage, moderate_bactericidal).
-drug_stage_effect(quinine, trophozoite, strong_bactericidal).
-drug_stage_effect(quinine, schizont, strong_bactericidal).
+drug_stage_effect(quinine, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(quinine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(quinine, schizont, strong_plasmodicidal).
 drug_stage_effect(quinine, hypnozoite, no_effect).
 drug_stage_effect(quinine, gametocyte, weak_inhibit).
 drug_combination_type(quinine, none).
@@ -738,7 +743,7 @@ drug_attr(artemether, iupac_name, '(1R,4S,5R,8S,9R,10S,12R,13R)-10-methoxy-1,5,9
 drug_class(artemether, review, 'Artemisinin').
 drug_class(artemether, cn, 'Artemisinins').
 drug_class(artemether, atc, 'Artemisinin and derivatives, plain (P01BE)').
-drug_core_structure(artemether, '1,2,4-Trioxane endoperoxide', 'WHO World Malaria Report 2023; Nature, 2014, 505(7481): 50-55').
+drug_core_structure(artemether, '1,2,4-Trioxane endoperoxide', '1,2,4-Trioxane endoperoxide core scaffold', 'WHO World Malaria Report 2023; Nature, 2014, 505(7481): 50-55').
 malaria_line_usage(artemether, 'Plasmodium falciparum', first_line, 'First-line ACT component (Coartem) for uncomplicated falciparum malaria; also used for severe malaria', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(artemether, 'Plasmodium vivax', first_line, 'First-line blood schizonticide for vivax malaria; combined with primaquine for radical cure', 'N Engl J Med, 2019, 380(11): 1027-1038').
 malaria_line_usage(artemether, 'Plasmodium ovale', first_line, 'Rapidly clears erythrocytic stages; primaquine co-administration required for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -747,9 +752,9 @@ drug_synergy(artemether, lumefantrine, 'Artemether provides fast-acting parasite
 drug_synergy(artemether, primaquine, 'Artemether clears blood-stage parasites; primaquine eliminates hypnozoites and gametocytes for radical cure and transmission blocking', 'Lancet Infect Dis, 2020, 20(12): e363-e374').
 full_moa_detail(artemether, review, 'Artemether is a lipophilic artemisinin derivative containing an endoperoxide bridge. In the parasite digestive vacuole, ferrous iron from heme cleaves the endoperoxide bond, generating highly reactive carbon-centered free radicals. These radicals alkylate multiple parasite proteins including PfATP6 (SERCA calcium pump), PI3K and cytoskeletal proteins, disrupting calcium homeostasis, protein trafficking and membrane integrity. It kills all asexual blood stages rapidly, especially ring-stage parasites.', 'Ariey F et al. Nature, 2014, 505(7481): 50-55').
 full_moa_detail(artemether, chembl, 'Endoperoxide prodrug; heme-activated free radical generator; multi-target alkylating agent', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(artemether, ring_stage, strong_bactericidal).
-drug_stage_effect(artemether, trophozoite, strong_bactericidal).
-drug_stage_effect(artemether, schizont, moderate_bactericidal).
+drug_stage_effect(artemether, ring_stage, strong_plasmodicidal).
+drug_stage_effect(artemether, trophozoite, strong_plasmodicidal).
+drug_stage_effect(artemether, schizont, moderate_plasmodicidal).
 drug_stage_effect(artemether, hypnozoite, no_effect).
 drug_stage_effect(artemether, gametocyte, moderate_inhibit).
 drug_combination_type(artemether, 'Coartem').
@@ -815,7 +820,7 @@ drug_attr(lumefantrine, iupac_name, '2-(dibutylamino)-1-[(9Z)-2,7-dichloro-9-[(4
 drug_class(lumefantrine, review, 'Aryl amino alcohol').
 drug_class(lumefantrine, cn, 'Arylaminoalcohols').
 drug_class(lumefantrine, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(lumefantrine, 'Aryl amino alcohol', 'WHO World Malaria Report 2023; J Infect Dis, 2005, 191(6): 1014-1017').
+drug_core_structure(lumefantrine, 'Aryl amino alcohol', 'Aryl amino alcohol core scaffold', 'WHO World Malaria Report 2023; J Infect Dis, 2005, 191(6): 1014-1017').
 malaria_line_usage(lumefantrine, 'Plasmodium falciparum', first_line, 'First-line partner drug in artemether-lumefantrine ACT; never used as monotherapy', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(lumefantrine, 'Plasmodium vivax', second_line, 'Active against vivax malaria; used off-label in combination with artemether', 'Malar J, 2017, 16(1): 421').
 malaria_line_usage(lumefantrine, 'Plasmodium ovale', third_line, 'Limited clinical data; not routinely recommended', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -824,9 +829,9 @@ drug_synergy(lumefantrine, artemether, 'Long-acting partner drug that clears res
 drug_synergy(lumefantrine, primaquine, 'Adds gametocytocidal and hypnozoiticidal activity to ACT regimen for radical cure of relapsing malaria', 'Lancet Infect Dis, 2020, 20(12): e363-e374').
 full_moa_detail(lumefantrine, review, 'Lumefantrine is a highly lipophilic arylamino alcohol that concentrates in the Plasmodium digestive vacuole. It binds to ferriprotoporphyrin IX and inhibits hemozoin polymerization, causing toxic heme accumulation and parasite death. Its long elimination half-life provides sustained post-treatment prophylaxis. PfMDR1 gene amplification and N86 wild-type alleles reduce drug susceptibility by increasing vacuolar efflux.', 'Sisowath C et al. J Infect Dis, 2005, 191(6): 1014-1017').
 full_moa_detail(lumefantrine, chembl, 'Hemozoin formation inhibitor; ferriprotoporphyrin IX binder; long-acting ACT partner drug', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(lumefantrine, ring_stage, weak_bactericidal).
-drug_stage_effect(lumefantrine, trophozoite, strong_bactericidal).
-drug_stage_effect(lumefantrine, schizont, strong_bactericidal).
+drug_stage_effect(lumefantrine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(lumefantrine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(lumefantrine, schizont, strong_plasmodicidal).
 drug_stage_effect(lumefantrine, hypnozoite, no_effect).
 drug_stage_effect(lumefantrine, gametocyte, weak_inhibit).
 drug_combination_type(lumefantrine, 'Coartem').
@@ -891,7 +896,7 @@ drug_attr(tafenoquine, iupac_name, '4-N-[2,6-dimethoxy-4-methyl-5-[3-(trifluorom
 drug_class(tafenoquine, review, '8-Aminoquinoline').
 drug_class(tafenoquine, cn, 'Quinolines').
 drug_class(tafenoquine, atc, 'Aminoquinolines (P01BA)').
-drug_core_structure(tafenoquine, '8-Aminoquinoline', 'WHO World Malaria Report 2023; N Engl J Med, 2018, 379(1): 1-12').
+drug_core_structure(tafenoquine, '8-Aminoquinoline', '8-Aminoquinoline core scaffold', 'WHO World Malaria Report 2023; N Engl J Med, 2018, 379(1): 1-12').
 malaria_line_usage(tafenoquine, 'Plasmodium vivax', first_line, 'First-line single-dose radical cure agent for P. vivax malaria; co-administered with chloroquine or ACT', 'N Engl J Med, 2018, 379(1): 1-12').
 malaria_line_usage(tafenoquine, 'Plasmodium ovale', second_line, 'Active against P. ovale hypnozoites; limited clinical data compared to primaquine', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
 malaria_line_usage(tafenoquine, 'Plasmodium falciparum', second_line, 'Moderate blood-stage activity plus strong gametocytocidal effect for transmission blocking', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
@@ -900,11 +905,11 @@ drug_synergy(tafenoquine, chloroquine, 'Chloroquine clears erythrocytic parasite
 drug_synergy(tafenoquine, artemether, 'ACT provides fast blood-stage clearance; tafenoquine provides single-dose radical cure and transmission blocking', 'Lancet Infect Dis, 2020, 20(12): e363-e374').
 full_moa_detail(tafenoquine, review, 'Tafenoquine is a long-acting 8-aminoquinoline prodrug activated by hepatic CYP2D6 into reactive quinone-imine metabolites. These metabolites accumulate in Plasmodium hepatic hypnozoites, disrupt mitochondrial electron transport via bc1 complex inhibition, induce oxidative stress and cause hypnozoite death. Its 14-day half-life enables single-dose radical cure, improving adherence compared to 14-day primaquine regimens.', 'Lancet Infect Dis, 2019, 19(8): 873-882').
 full_moa_detail(tafenoquine, chembl, 'Hypnozoitocidal 8-aminoquinoline; mitochondrial electron transport inhibitor; oxidative stress inducer', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(tafenoquine, ring_stage, weak_bactericidal).
-drug_stage_effect(tafenoquine, trophozoite, moderate_bactericidal).
-drug_stage_effect(tafenoquine, schizont, moderate_bactericidal).
-drug_stage_effect(tafenoquine, hypnozoite, strong_bactericidal).
-drug_stage_effect(tafenoquine, gametocyte, strong_bactericidal).
+drug_stage_effect(tafenoquine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(tafenoquine, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(tafenoquine, schizont, moderate_plasmodicidal).
+drug_stage_effect(tafenoquine, hypnozoite, strong_plasmodicidal).
+drug_stage_effect(tafenoquine, gametocyte, strong_plasmodicidal).
 drug_combination_type(tafenoquine, none).
 drug_resistance_level(tafenoquine, 'Plasmodium falciparum', sensitive).
 drug_resistance_level(tafenoquine, 'Plasmodium vivax', sensitive).
@@ -924,11 +929,12 @@ guideline_ref(tafenoquine, 'CDC Malaria Treatment Guidelines, 2024').
 drug_moa(tafenoquine, review, 'A prodrug activated by hepatic CYP2D6; target not yet identified (also listed in Table 2, Phase IV)').
 drug_moa(tafenoquine, chembl, 'Antimalarial (8-aminoquinoline); Multi-target mechanisms - oxidative stress, mitochondrial damage').
 drug_target(tafenoquine, 'Inhibition hematin polymerization', chembl).
-drug_target_organism(tafenoquine, 'Plasmodium vivax / P. falciparum').
+drug_target_organism(tafenoquine, 'Plasmodium vivax').
+drug_target_organism(tafenoquine, 'Plasmodium falciparum').
 drug_target_xref(tafenoquine, uniprot, 'Not yet established').
 drug_target_xref(tafenoquine, chembl, 'CHEMBL298470').
 drug_action_type(tafenoquine, 'OXIDATIVE STRESS INDUCER MULTI-TARGET').
-drug_resistance(tafenoquine, 'No widely reported parasite resistance mechanism to date', '\\').
+drug_resistance(tafenoquine, 'No widely reported parasite resistance mechanism to date', 'none').
 drug_warning(tafenoquine, 'Patients with G6PD deficiency are contraindicated (G6PD activity should be tested before use).  Methemoglobinemia Mental neurological symptoms (insomnia, abnormal dreams) Hemolytic anemia').
 drug_indication(tafenoquine, 'malaria (max phase 4)').
 drug_indication(tafenoquine, 'Plasmodium vivax malaria (max phase 3)').
@@ -965,7 +971,7 @@ drug_attr(artesunate, iupac_name, '4-oxo-4-[[(1R,4S,5R,8S,9R,10S,12R,13R)-1,5,9-
 drug_class(artesunate, review, 'Artemisinin').
 drug_class(artesunate, cn, 'Artemisinins').
 drug_class(artesunate, atc, 'Artemisinin and derivatives, plain (P01BE)').
-drug_core_structure(artesunate, '1,2,4-Trioxane endoperoxide', 'WHO World Malaria Report 2023; N Engl J Med, 2010, 363(20): 1917-1926').
+drug_core_structure(artesunate, '1,2,4-Trioxane endoperoxide', '1,2,4-Trioxane endoperoxide core scaffold', 'WHO World Malaria Report 2023; N Engl J Med, 2010, 363(20): 1917-1926').
 malaria_line_usage(artesunate, 'Plasmodium falciparum', first_line, 'First-line parenteral treatment for severe falciparum malaria; also core component of oral ACT regimens', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(artesunate, 'Plasmodium vivax', first_line, 'First-line treatment for severe vivax malaria; combined with primaquine for radical cure', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
 malaria_line_usage(artesunate, 'Plasmodium ovale', first_line, 'Rapidly clears erythrocytic stages; primaquine required for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -974,9 +980,9 @@ drug_synergy(artesunate, amodiaquine, 'Fixed-dose ACT combination; fast-acting a
 drug_synergy(artesunate, mefloquine, 'Second-line ACT for multidrug-resistant falciparum malaria in Southeast Asia', 'N Engl J Med, 2008, 359(18): 1865-1875').
 full_moa_detail(artesunate, review, 'Artesunate is a water-soluble hemisuccinate ester prodrug of dihydroartemisinin (DHA), the active metabolite. After rapid hydrolysis in plasma, DHA enters parasite digestive vacuoles where heme iron cleaves its endoperoxide bridge, generating cytotoxic carbon radicals. These radicals alkylate hundreds of parasite proteins including PfATP6, PfPI3K and translation machinery, causing widespread cellular damage and rapid parasite death. It is the most rapidly acting antimalarial for severe disease.', 'Dondorp AM et al. N Engl J Med, 2010, 363(20): 1917-1926').
 full_moa_detail(artesunate, chembl, 'Endoperoxide prodrug; heme-activated alkylating agent; multi-target fast-acting schizonticide', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(artesunate, ring_stage, strong_bactericidal).
-drug_stage_effect(artesunate, trophozoite, strong_bactericidal).
-drug_stage_effect(artesunate, schizont, moderate_bactericidal).
+drug_stage_effect(artesunate, ring_stage, strong_plasmodicidal).
+drug_stage_effect(artesunate, trophozoite, strong_plasmodicidal).
+drug_stage_effect(artesunate, schizont, moderate_plasmodicidal).
 drug_stage_effect(artesunate, hypnozoite, no_effect).
 drug_stage_effect(artesunate, gametocyte, moderate_inhibit).
 drug_combination_type(artesunate, 'Artesunate-Amodiaquine').
@@ -1043,7 +1049,7 @@ drug_attr(sj733, iupac_name, '(3S,4S)-N-(3-cyano-4-fluorophenyl)-1-oxo-3-pyridin
 drug_class(sj733, review, 'Dihydroisoquinolone').
 drug_class(sj733, cn, 'Other/Novel').
 drug_class(sj733, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(sj733, 'Dihydroisoquinolone', 'Nature, 2014, 511(7508): 249-253; Sci Transl Med, 2017, 9(407): eaam9069').
+drug_core_structure(sj733, 'Dihydroisoquinolone', 'Dihydroisoquinolone core scaffold', 'Nature, 2014, 511(7508): 249-253; Sci Transl Med, 2017, 9(407): eaam9069').
 malaria_line_usage(sj733, 'Plasmodium falciparum', investigational, 'Phase II candidate for uncomplicated falciparum malaria; novel mechanism to overcome resistance', 'Sci Transl Med, 2017, 9(407): eaam9069').
 malaria_line_usage(sj733, 'Plasmodium vivax', investigational, 'Preclinical activity demonstrated; no clinical phase II data yet', 'Antimicrob Agents Chemother, 2018, 62(10): e01128-18').
 malaria_line_usage(sj733, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1052,9 +1058,9 @@ drug_synergy(sj733, artemisinin, 'Synergistic activity against artemisinin-resis
 drug_synergy(sj733, piperaquine, 'Combination under preclinical evaluation for multidrug-resistant malaria', 'Antimicrob Agents Chemother, 2018, 62(10): e01128-18').
 full_moa_detail(sj733, review, 'SJ733 is a dihydroisoquinolone that selectively inhibits the Plasmodium falciparum P4-type ATPase PfATP4, a sodium efflux pump on the parasite plasma membrane. Inhibition causes intracellular sodium accumulation, cell swelling, disruption of membrane potential and pH homeostasis, and rapid parasite death across all asexual blood stages. It retains activity against strains resistant to all current antimalarial classes.', 'Spillman NJ et al. Nature, 2014, 511(7508): 249-253').
 full_moa_detail(sj733, chembl, 'PfATP4 sodium ATPase inhibitor; novel mechanism antimalarial candidate', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(sj733, ring_stage, strong_bactericidal).
-drug_stage_effect(sj733, trophozoite, strong_bactericidal).
-drug_stage_effect(sj733, schizont, strong_bactericidal).
+drug_stage_effect(sj733, ring_stage, strong_plasmodicidal).
+drug_stage_effect(sj733, trophozoite, strong_plasmodicidal).
+drug_stage_effect(sj733, schizont, strong_plasmodicidal).
 drug_stage_effect(sj733, hypnozoite, not_evaluated).
 drug_stage_effect(sj733, gametocyte, moderate_inhibit).
 drug_combination_type(sj733, investigational).
@@ -1104,7 +1110,7 @@ drug_attr(aq_13_dihydrochloride, iupac_name, 'N-(7-chloroquinolin-4-yl)-N\',N\'-
 drug_class(aq_13_dihydrochloride, review, '4-Aminoquinoline').
 drug_class(aq_13_dihydrochloride, cn, 'Quinolines').
 drug_class(aq_13_dihydrochloride, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(aq_13_dihydrochloride, '4-Aminoquinoline', 'Antimicrob Agents Chemother, 2016, 60(10): 6003-6011').
+drug_core_structure(aq_13_dihydrochloride, '4-Aminoquinoline', '4-Aminoquinoline core scaffold', 'Antimicrob Agents Chemother, 2016, 60(10): 6003-6011').
 malaria_line_usage(aq_13_dihydrochloride, 'Plasmodium falciparum', investigational, 'Phase II candidate designed to overcome chloroquine resistance', 'Antimicrob Agents Chemother, 2016, 60(10): 6003-6011').
 malaria_line_usage(aq_13_dihydrochloride, 'Plasmodium vivax', investigational, 'Preclinical activity demonstrated; limited clinical data', 'Malar J, 2018, 17(1): 245').
 malaria_line_usage(aq_13_dihydrochloride, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1113,9 +1119,9 @@ drug_synergy(aq_13_dihydrochloride, primaquine, 'Designed as chloroquine replace
 drug_synergy(aq_13_dihydrochloride, artesunate, 'Potential ACT partner drug for chloroquine-resistant regions', 'Malar J, 2018, 17(1): 245').
 full_moa_detail(aq_13_dihydrochloride, review, 'AQ-13 is a 4-aminoquinoline analog with a shortened side chain designed to evade PfCRT-mediated efflux. Like chloroquine, it accumulates in the digestive vacuole, binds ferriprotoporphyrin IX and inhibits hemozoin crystallization. Its structural modification reduces recognition by the PfCRT K76T mutant transporter, restoring activity against chloroquine-resistant P. falciparum strains.', 'Antimicrob Agents Chemother, 2016, 60(10): 6003-6011').
 full_moa_detail(aq_13_dihydrochloride, chembl, 'Hemozoin formation inhibitor; PfCRT-evading 4-aminoquinoline candidate', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(aq_13_dihydrochloride, ring_stage, weak_bactericidal).
-drug_stage_effect(aq_13_dihydrochloride, trophozoite, strong_bactericidal).
-drug_stage_effect(aq_13_dihydrochloride, schizont, strong_bactericidal).
+drug_stage_effect(aq_13_dihydrochloride, ring_stage, weak_plasmodicidal).
+drug_stage_effect(aq_13_dihydrochloride, trophozoite, strong_plasmodicidal).
+drug_stage_effect(aq_13_dihydrochloride, schizont, strong_plasmodicidal).
 drug_stage_effect(aq_13_dihydrochloride, hypnozoite, no_effect).
 drug_stage_effect(aq_13_dihydrochloride, gametocyte, weak_inhibit).
 drug_combination_type(aq_13_dihydrochloride, investigational).
@@ -1161,7 +1167,7 @@ drug_attr(cipargamin, iupac_name, '(3R,3\'S)-5,7\'-dichloro-6\'-fluoro-3\'-methy
 drug_class(cipargamin, review, 'Spiroindolone').
 drug_class(cipargamin, cn, 'Other/Novel').
 drug_class(cipargamin, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(cipargamin, 'Spiroindolone', 'Science, 2010, 329(5996): 1175-1180').
+drug_core_structure(cipargamin, 'Spiroindolone', 'Spiroindolone core scaffold', 'Science, 2010, 329(5996): 1175-1180').
 malaria_line_usage(cipargamin, 'Plasmodium falciparum', investigational, 'Phase II candidate with potent activity against multidrug-resistant and artemisinin-resistant strains', 'Science, 2010, 329(5996): 1175-1180').
 malaria_line_usage(cipargamin, 'Plasmodium vivax', investigational, 'Preclinical blood-stage activity demonstrated', 'Antimicrob Agents Chemother, 2014, 58(12): 7214-7221').
 malaria_line_usage(cipargamin, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1170,11 +1176,11 @@ drug_synergy(cipargamin, piperaquine, 'Lead combination under clinical developme
 drug_synergy(cipargamin, primaquine, 'Potential single-dose radical cure regimen for vivax malaria', 'Antimicrob Agents Chemother, 2014, 58(12): 7214-7221').
 full_moa_detail(cipargamin, review, 'Cipargamin is the first-in-class spiroindolone antimalarial that potently inhibits PfATP4, a Plasmodium-specific P-type Na+-ATPase. Inhibition disrupts sodium homeostasis, causes cytoplasmic alkalinization, cell swelling and rapid parasite death at nanomolar concentrations. It is active against all asexual blood stages and gametocytes, and retains full efficacy against strains resistant to all currently marketed antimalarials.', 'Rottmann M et al. Science, 2010, 329(5996): 1175-1180').
 full_moa_detail(cipargamin, chembl, 'PfATP4 sodium ATPase inhibitor; spiroindolone class; multi-stage antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(cipargamin, ring_stage, strong_bactericidal).
-drug_stage_effect(cipargamin, trophozoite, strong_bactericidal).
-drug_stage_effect(cipargamin, schizont, strong_bactericidal).
+drug_stage_effect(cipargamin, ring_stage, strong_plasmodicidal).
+drug_stage_effect(cipargamin, trophozoite, strong_plasmodicidal).
+drug_stage_effect(cipargamin, schizont, strong_plasmodicidal).
 drug_stage_effect(cipargamin, hypnozoite, not_evaluated).
-drug_stage_effect(cipargamin, gametocyte, strong_bactericidal).
+drug_stage_effect(cipargamin, gametocyte, strong_plasmodicidal).
 drug_combination_type(cipargamin, investigational).
 drug_resistance_level(cipargamin, 'Plasmodium falciparum', sensitive).
 drug_resistance_level(cipargamin, 'Plasmodium vivax', sensitive).
@@ -1227,13 +1233,13 @@ drug_attr(imatinib, phase, 'II').
 drug_attr(imatinib, trade_name, 'Gleevec').
 drug_attr(imatinib, approval_year, 2001).
 drug_attr(imatinib, modality, 'Small molecule').
-drug_attr(imatinib, dev_status, 'approved').
+drug_attr(imatinib, dev_status, 'candidate_repurposed_from_oncology').
 drug_attr(imatinib, action_type, 'INHIBITOR').
 drug_attr(imatinib, iupac_name, '4-[(4-methylpiperazin-1-yl)methyl]-N-[4-methyl-3-[(4-pyridin-3-ylpyrimidin-2-yl)amino]phenyl]benzamide').
 drug_class(imatinib, review, '2-Phenylaminopyrimidine').
 drug_class(imatinib, cn, 'Other/Novel').
 drug_class(imatinib, atc, 'BCR-ABL tyrosine kinase inhibitors (L01EA)').
-drug_core_structure(imatinib, '2-Phenylaminopyrimidine', 'Nat Commun, 2017, 8(1): 1420').
+drug_core_structure(imatinib, '2-Phenylaminopyrimidine', '2-Phenylaminopyrimidine core scaffold', 'Nat Commun, 2017, 8(1): 1420').
 malaria_line_usage(imatinib, 'Plasmodium falciparum', investigational, 'Repurposed drug candidate as adjunctive therapy for severe malaria; targets host kinase pathway', 'Nat Commun, 2017, 8(1): 1420').
 malaria_line_usage(imatinib, 'Plasmodium vivax', not_evaluated, 'Limited preclinical data', 'Preclinical repurposing studies only').
 malaria_line_usage(imatinib, 'Plasmodium ovale', not_evaluated, 'No published data', 'Preclinical data only').
@@ -1307,7 +1313,7 @@ drug_attr(m5717, iupac_name, '6-fluoro-2-[4-(morpholin-4-ylmethyl)phenyl]-N-(2-p
 drug_class(m5717, review, 'Quinoline diamine').
 drug_class(m5717, cn, 'Quinolines').
 drug_class(m5717, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(m5717, 'Quinoline diamide', 'Nature, 2015, 522(7556): 315-320').
+drug_core_structure(m5717, 'Quinoline diamide', 'Quinoline diamide core scaffold', 'Nature, 2015, 522(7556): 315-320').
 malaria_line_usage(m5717, 'Plasmodium falciparum', investigational, 'Phase II candidate targeting protein synthesis; single-dose cure potential', 'Nature, 2015, 522(7556): 315-320').
 malaria_line_usage(m5717, 'Plasmodium vivax', investigational, 'Preclinical activity demonstrated; multi-stage coverage', 'Antimicrob Agents Chemother, 2017, 61(11): e01482-17').
 malaria_line_usage(m5717, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1316,11 +1322,11 @@ drug_synergy(m5717, artefenomel, 'Novel ACT-like combination under development f
 drug_synergy(m5717, primaquine, 'Potential radical cure combination for vivax malaria', 'Antimicrob Agents Chemother, 2017, 61(11): e01482-17').
 full_moa_detail(m5717, review, 'M5717 (cabamiquine) is a quinoline diamide that selectively inhibits Plasmodium falciparum elongation factor 2 (PfeEF2), a GTPase essential for protein translation elongation. It binds to a unique allosteric site on PfeEF2, blocking ribosomal translocation and parasite protein synthesis. Its novel target confers no cross-resistance to existing antimalarials, and it exhibits activity across all asexual blood stages plus liver and gametocyte stages.', 'Baragaña B et al. Nature, 2015, 522(7556): 315-320').
 full_moa_detail(m5717, chembl, 'Eukaryotic elongation factor 2 inhibitor; translation blocker; multi-stage antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(m5717, ring_stage, strong_bactericidal).
-drug_stage_effect(m5717, trophozoite, strong_bactericidal).
-drug_stage_effect(m5717, schizont, strong_bactericidal).
-drug_stage_effect(m5717, hypnozoite, moderate_bactericidal).
-drug_stage_effect(m5717, gametocyte, strong_bactericidal).
+drug_stage_effect(m5717, ring_stage, strong_plasmodicidal).
+drug_stage_effect(m5717, trophozoite, strong_plasmodicidal).
+drug_stage_effect(m5717, schizont, strong_plasmodicidal).
+drug_stage_effect(m5717, hypnozoite, moderate_plasmodicidal).
+drug_stage_effect(m5717, gametocyte, strong_plasmodicidal).
 drug_combination_type(m5717, investigational).
 drug_resistance_level(m5717, 'Plasmodium falciparum', sensitive).
 drug_resistance_level(m5717, 'Plasmodium vivax', sensitive).
@@ -1378,7 +1384,7 @@ drug_attr(methylene_blue, iupac_name, '[7-(dimethylamino)phenothiazin-3-ylidene]
 drug_class(methylene_blue, review, 'Phenothiazine').
 drug_class(methylene_blue, cn, 'Other/Novel').
 drug_class(methylene_blue, atc, 'Tests for gastric secretion (V04CG)').
-drug_core_structure(methylene_blue, 'Phenothiazine', 'Antimicrob Agents Chemother, 2011, 55(9): 4177-4184').
+drug_core_structure(methylene_blue, 'Phenothiazine', 'Phenothiazine core scaffold', 'Antimicrob Agents Chemother, 2011, 55(9): 4177-4184').
 malaria_line_usage(methylene_blue, 'Plasmodium falciparum', investigational, 'Repurposed candidate as adjunctive partner drug for ACT regimens; gametocytocidal activity', 'Antimicrob Agents Chemother, 2011, 55(9): 4177-4184').
 malaria_line_usage(methylene_blue, 'Plasmodium vivax', third_line, 'Historical use; limited modern clinical data', 'Malar J, 2019, 18(1): 212').
 malaria_line_usage(methylene_blue, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Historical data only').
@@ -1387,11 +1393,11 @@ drug_synergy(methylene_blue, artesunate, 'Synergistic blood-stage activity plus 
 drug_synergy(methylene_blue, chloroquine, 'Historical combination; restores activity against chloroquine-resistant strains in preclinical models', 'Antimicrob Agents Chemother, 2011, 55(9): 4177-4184').
 full_moa_detail(methylene_blue, review, 'Methylene blue is a phenothiazine dye with multiple antimalarial mechanisms. It inhibits glutathione-dependent heme degradation in the parasite digestive vacuole, increasing toxic free heme levels. It also generates reactive oxygen species via redox cycling, inhibits soluble guanylate cyclase, and exhibits potent gametocytocidal activity. It has been used historically for malaria treatment and is currently being evaluated as a transmission-blocking partner drug.', 'Antimicrob Agents Chemother, 2011, 55(9): 4177-4184').
 full_moa_detail(methylene_blue, chembl, 'Glutathione reductase inhibitor; heme degradation blocker; gametocytocidal phenothiazine', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(methylene_blue, ring_stage, moderate_bactericidal).
-drug_stage_effect(methylene_blue, trophozoite, moderate_bactericidal).
-drug_stage_effect(methylene_blue, schizont, weak_bactericidal).
+drug_stage_effect(methylene_blue, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(methylene_blue, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(methylene_blue, schizont, weak_plasmodicidal).
 drug_stage_effect(methylene_blue, hypnozoite, no_effect).
-drug_stage_effect(methylene_blue, gametocyte, strong_bactericidal).
+drug_stage_effect(methylene_blue, gametocyte, strong_plasmodicidal).
 drug_combination_type(methylene_blue, investigational).
 drug_resistance_level(methylene_blue, 'Plasmodium falciparum', sensitive).
 drug_resistance_level(methylene_blue, 'Plasmodium vivax', sensitive).
@@ -1419,7 +1425,7 @@ drug_target_xref(methylene_blue, uniprot, 'P33402').
 drug_target_xref(methylene_blue, uniprot, 'Q02108').
 drug_target_xref(methylene_blue, chembl, 'CHEMBL405110/CHEMBL550495').
 drug_action_type(methylene_blue, 'INHIBITOR').
-drug_resistance(methylene_blue, 'No widely reported parasite resistance mechanism to date', '\\').
+drug_resistance(methylene_blue, 'No widely reported parasite resistance mechanism to date', 'none').
 drug_warning(methylene_blue, 'Serotonin syndrome (when used in combination with SSRIs) The risk of hemolysis in individuals with G6PD deficiency Urine/skin indigo staining Methemoglobinemia at high doses').
 drug_indication(methylene_blue, 'colorectal neoplasm (max phase 4)').
 drug_indication(methylene_blue, 'methemoglobinemia (max phase 4)').
@@ -1452,7 +1458,7 @@ drug_attr(sevuparin, dev_status, 'investigational (Phase II)').
 drug_class(sevuparin, review, 'Acid polysaccharide').
 drug_class(sevuparin, cn, 'Other/Novel').
 drug_class(sevuparin, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(sevuparin, 'Acid polysaccharide', 'Blood, 2012, 120(17): 3560-3568').
+drug_core_structure(sevuparin, 'Acid polysaccharide', 'Acid polysaccharide core scaffold', 'Blood, 2012, 120(17): 3560-3568').
 malaria_line_usage(sevuparin, 'Plasmodium falciparum', investigational, 'Phase II adjunctive candidate for severe malaria; targets cytoadhesion and rosetting', 'Blood, 2012, 120(17): 3560-3568').
 malaria_line_usage(sevuparin, 'Plasmodium vivax', not_evaluated, 'No clinical efficacy data', 'Preclinical data only').
 malaria_line_usage(sevuparin, 'Plasmodium ovale', not_evaluated, 'No published data', 'Preclinical data only').
@@ -1500,7 +1506,7 @@ drug_attr(rosiglitazone, iupac_name, '5-[[4-[2-[methyl(pyridin-2-yl)amino]ethoxy
 drug_class(rosiglitazone, review, 'Thiazolidinedione').
 drug_class(rosiglitazone, cn, 'Other/Novel').
 drug_class(rosiglitazone, atc, 'Thiazolidinediones (A10BG)').
-drug_core_structure(rosiglitazone, 'Thiazolidinedione', 'J Infect Dis, 2015, 212(7): 1117-1126').
+drug_core_structure(rosiglitazone, 'Thiazolidinedione', 'Thiazolidinedione core scaffold', 'J Infect Dis, 2015, 212(7): 1117-1126').
 malaria_line_usage(rosiglitazone, 'Plasmodium falciparum', investigational, 'Repurposed PPARγ agonist as adjunctive therapy for severe malaria; modulates host inflammatory response', 'J Infect Dis, 2015, 212(7): 1117-1126').
 malaria_line_usage(rosiglitazone, 'Plasmodium vivax', not_evaluated, 'No clinical data for malaria indication', 'Preclinical repurposing studies only').
 malaria_line_usage(rosiglitazone, 'Plasmodium ovale', not_evaluated, 'No published data', 'Preclinical data only').
@@ -1574,7 +1580,7 @@ drug_attr(dsm265, iupac_name, '2-(1,1-difluoroethyl)-5-methyl-N-[4-(pentafluoro-
 drug_class(dsm265, review, 'Triazolopyrimidine').
 drug_class(dsm265, cn, 'Other/Novel').
 drug_class(dsm265, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(dsm265, 'Triazolopyrimidine', 'Science Translational Medicine, 2015, 7(296): 296ra111').
+drug_core_structure(dsm265, 'Triazolopyrimidine', 'Triazolopyrimidine core scaffold', 'Science Translational Medicine, 2015, 7(296): 296ra111').
 malaria_line_usage(dsm265, 'Plasmodium falciparum', investigational, 'Phase II candidate targeting DHODH; potential for single-dose prophylaxis and treatment', 'Sci Transl Med, 2015, 7(296): 296ra111').
 malaria_line_usage(dsm265, 'Plasmodium vivax', investigational, 'Active against liver and blood stages; radical cure potential', 'Antimicrob Agents Chemother, 2018, 62(6): e00221-18').
 malaria_line_usage(dsm265, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1583,10 +1589,10 @@ drug_synergy(dsm265, artefenomel, 'Novel long-acting combination under developme
 drug_synergy(dsm265, primaquine, 'Potential radical cure combination with dual liver-stage activity', 'Antimicrob Agents Chemother, 2018, 62(6): e00221-18').
 full_moa_detail(dsm265, review, 'DSM265 is a triazolopyrimidine that selectively and potently inhibits Plasmodium dihydroorotate dehydrogenase (DHODH), a mitochondrial enzyme essential for de novo pyrimidine biosynthesis. By blocking the fourth step of pyrimidine synthesis, it disrupts DNA and RNA production, arresting parasite growth in both liver and blood stages. Its long half-life supports single-dose treatment and extended chemoprophylaxis. It has no cross-resistance with current antimalarials.', 'Phillips MA et al. Sci Transl Med, 2015, 7(296): 296ra111').
 full_moa_detail(dsm265, chembl, 'Dihydroorotate dehydrogenase inhibitor; pyrimidine synthesis blocker; multi-stage antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(dsm265, ring_stage, moderate_bactericidal).
-drug_stage_effect(dsm265, trophozoite, strong_bactericidal).
-drug_stage_effect(dsm265, schizont, strong_bactericidal).
-drug_stage_effect(dsm265, hypnozoite, moderate_bactericidal).
+drug_stage_effect(dsm265, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(dsm265, trophozoite, strong_plasmodicidal).
+drug_stage_effect(dsm265, schizont, strong_plasmodicidal).
+drug_stage_effect(dsm265, hypnozoite, moderate_plasmodicidal).
 drug_stage_effect(dsm265, gametocyte, moderate_inhibit).
 drug_combination_type(dsm265, investigational).
 drug_resistance_level(dsm265, 'Plasmodium falciparum', sensitive).
@@ -1639,7 +1645,7 @@ drug_attr(ferroquine, phase, 'II').
 drug_attr(ferroquine, iupac_name, '7-chloro-N-[[2-[(dimethylamino)methyl]cyclopenta-2,4-dien-1-yl]methyl]quinolin-4-amine;cyclopenta-1,3-diene;iron(2+)').
 drug_class(ferroquine, review, 'Ferrocene').
 drug_class(ferroquine, cn, 'Other/Novel').
-drug_core_structure(ferroquine, 'Ferrocene 4-aminoquinoline', 'J Med Chem, 2012, 55(10): 4938-4950').
+drug_core_structure(ferroquine, 'Ferrocene 4-aminoquinoline', 'Ferrocene 4-aminoquinoline core scaffold', 'J Med Chem, 2012, 55(10): 4938-4950').
 malaria_line_usage(ferroquine, 'Plasmodium falciparum', investigational, 'Phase II organometallic antimalarial; active against chloroquine-resistant strains', 'J Med Chem, 2012, 55(10): 4938-4950').
 malaria_line_usage(ferroquine, 'Plasmodium vivax', investigational, 'Preclinical activity demonstrated; limited clinical data', 'Malar J, 2020, 19(1): 312').
 malaria_line_usage(ferroquine, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1648,9 +1654,9 @@ drug_synergy(ferroquine, artesunate, 'Novel ACT combination under clinical devel
 drug_synergy(ferroquine, primaquine, 'Potential radical cure combination for chloroquine-resistant vivax malaria', 'Antimicrob Agents Chemother, 2019, 63(12): e01328-19').
 full_moa_detail(ferroquine, review, 'Ferroquine is an organometallic 4-aminoquinoline analog containing a ferrocene moiety. Like chloroquine, it accumulates in the parasite digestive vacuole and inhibits hemozoin crystallization, but its ferrocene group generates additional reactive oxygen species via Fenton chemistry, enhancing oxidative stress and parasite killing. This dual mechanism overcomes PfCRT-mediated chloroquine resistance, making it active against multidrug-resistant P. falciparum strains.', 'Biot A et al. J Med Chem, 2012, 55(10): 4938-4950').
 full_moa_detail(ferroquine, chembl, 'Hemozoin inhibitor; ferrocene-based ROS generator; organometallic antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(ferroquine, ring_stage, moderate_bactericidal).
-drug_stage_effect(ferroquine, trophozoite, strong_bactericidal).
-drug_stage_effect(ferroquine, schizont, strong_bactericidal).
+drug_stage_effect(ferroquine, ring_stage, moderate_plasmodicidal).
+drug_stage_effect(ferroquine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(ferroquine, schizont, strong_plasmodicidal).
 drug_stage_effect(ferroquine, hypnozoite, no_effect).
 drug_stage_effect(ferroquine, gametocyte, moderate_inhibit).
 drug_combination_type(ferroquine, investigational).
@@ -1689,7 +1695,7 @@ drug_attr(artefenomel, modality, 'Small molecule').
 drug_class(artefenomel, review, '1,2,4-Trioxolane').
 drug_class(artefenomel, cn, 'Synthetic peroxides').
 drug_class(artefenomel, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(artefenomel, '1,2,4-Trioxolane synthetic endoperoxide', 'Nature, 2012, 485(7396): 95-98').
+drug_core_structure(artefenomel, '1,2,4-Trioxolane synthetic endoperoxide', '1,2,4-Trioxolane synthetic endoperoxide core scaffold', 'Nature, 2012, 485(7396): 95-98').
 malaria_line_usage(artefenomel, 'Plasmodium falciparum', investigational, 'Phase III synthetic endoperoxide; long-acting single-dose ACT candidate', 'Nature, 2012, 485(7396): 95-98').
 malaria_line_usage(artefenomel, 'Plasmodium vivax', investigational, 'Preclinical blood-stage activity; requires primaquine for radical cure', 'Antimicrob Agents Chemother, 2016, 60(11): 6607-6615').
 malaria_line_usage(artefenomel, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1698,9 +1704,9 @@ drug_synergy(artefenomel, piperaquine, 'Long-acting synthetic peroxide combinati
 drug_synergy(artefenomel, dsm265, 'Novel combination with dual novel mechanisms for extended chemoprotection', 'Lancet Infect Dis, 2023, 23(5): 637-646').
 full_moa_detail(artefenomel, review, 'Artefenomel (OZ439) is a fully synthetic trioxolane endoperoxide designed to overcome artemisinin limitations. Like artemisinins, its endoperoxide bridge is activated by ferrous heme in the parasite digestive vacuole, generating cytotoxic carbon radicals that alkylate parasite proteins. Its optimized structure confers greatly extended half-life, enabling single-dose therapy, and retains full activity against artemisinin-resistant PfKelch13 mutant strains.', 'Charman SA et al. Nature, 2012, 485(7396): 95-98').
 full_moa_detail(artefenomel, chembl, 'Synthetic endoperoxide; heme-activated free radical generator; long-acting antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(artefenomel, ring_stage, strong_bactericidal).
-drug_stage_effect(artefenomel, trophozoite, strong_bactericidal).
-drug_stage_effect(artefenomel, schizont, moderate_bactericidal).
+drug_stage_effect(artefenomel, ring_stage, strong_plasmodicidal).
+drug_stage_effect(artefenomel, trophozoite, strong_plasmodicidal).
+drug_stage_effect(artefenomel, schizont, moderate_plasmodicidal).
 drug_stage_effect(artefenomel, hypnozoite, no_effect).
 drug_stage_effect(artefenomel, gametocyte, moderate_inhibit).
 drug_combination_type(artefenomel, investigational).
@@ -1747,7 +1753,7 @@ drug_attr(artemisone, iupac_name, '4-[(1R,4S,5R,8S,9R,10R,12R,13R)-1,5,9-trimeth
 drug_class(artemisone, review, 'Artemisinin').
 drug_class(artemisone, cn, 'Artemisinins').
 drug_class(artemisone, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(artemisone, '1,2,4-Trioxane endoperoxide', 'J Med Chem, 2005, 48(11): 3745-3751').
+drug_core_structure(artemisone, '1,2,4-Trioxane endoperoxide', '1,2,4-Trioxane endoperoxide core scaffold', 'J Med Chem, 2005, 48(11): 3745-3751').
 malaria_line_usage(artemisone, 'Plasmodium falciparum', investigational, 'Phase III artemisinin derivative; improved potency and neurotoxicity profile', 'J Med Chem, 2005, 48(11): 3745-3751').
 malaria_line_usage(artemisone, 'Plasmodium vivax', investigational, 'Active against blood stages; primaquine required for radical cure', 'Malar J, 2017, 16(1): 340').
 malaria_line_usage(artemisone, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1756,9 +1762,9 @@ drug_synergy(artemisone, piperaquine, 'ACT combination under development for mul
 drug_synergy(artemisone, primaquine, 'Potential radical cure combination with enhanced gametocytocidal activity', 'Malar J, 2017, 16(1): 340').
 full_moa_detail(artemisone, review, 'Artemisone is a second-generation semisynthetic artemisinin derivative with a morpholine-containing side chain. Its endoperoxide bridge is activated by heme iron to generate cytotoxic free radicals that alkylate parasite proteins and membranes. Compared to artemisinin, it has higher potency, longer half-life, and reduced neurotoxicity in preclinical models. It retains activity against artemisinin-resistant strains in vitro.', 'Haynes RK et al. J Med Chem, 2005, 48(11): 3745-3751').
 full_moa_detail(artemisone, chembl, 'Endoperoxide antimalarial; heme-activated alkylating agent; second-generation artemisinin analog', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(artemisone, ring_stage, strong_bactericidal).
-drug_stage_effect(artemisone, trophozoite, strong_bactericidal).
-drug_stage_effect(artemisone, schizont, moderate_bactericidal).
+drug_stage_effect(artemisone, ring_stage, strong_plasmodicidal).
+drug_stage_effect(artemisone, trophozoite, strong_plasmodicidal).
+drug_stage_effect(artemisone, schizont, moderate_plasmodicidal).
 drug_stage_effect(artemisone, hypnozoite, no_effect).
 drug_stage_effect(artemisone, gametocyte, moderate_inhibit).
 drug_combination_type(artemisone, investigational).
@@ -1807,7 +1813,7 @@ drug_attr(fosmidomycin, iupac_name, '3-[formyl(hydroxy)amino]propylphosphonic ac
 drug_class(fosmidomycin, review, 'Phosphonic acid').
 drug_class(fosmidomycin, cn, 'Other/Novel').
 drug_class(fosmidomycin, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(fosmidomycin, 'Phosphonic acid', 'Proc Natl Acad Sci U S A, 1998, 95(21): 12398-12403').
+drug_core_structure(fosmidomycin, 'Phosphonic acid', 'Phosphonic acid core scaffold', 'Proc Natl Acad Sci U S A, 1998, 95(21): 12398-12403').
 malaria_line_usage(fosmidomycin, 'Plasmodium falciparum', investigational, 'Phase III candidate targeting apicoplast MEP pathway; used in combination therapy', 'Proc Natl Acad Sci U S A, 1998, 95(21): 12398-12403').
 malaria_line_usage(fosmidomycin, 'Plasmodium vivax', third_line, 'Limited activity; not routinely recommended', 'Malar J, 2019, 18(1): 145').
 malaria_line_usage(fosmidomycin, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Preclinical data only').
@@ -1816,9 +1822,9 @@ drug_synergy(fosmidomycin, clindamycin, 'First-line combination for multidrug-re
 drug_synergy(fosmidomycin, piperaquine, 'Novel ACT-like combination under phase III development', 'N Engl J Med, 2023, 388(12): 1093-1103').
 full_moa_detail(fosmidomycin, review, 'Fosmidomycin is a phosphonic acid antibiotic that selectively inhibits 1-deoxy-D-xylulose 5-phosphate reductoisomerase (DXR), the rate-limiting enzyme in the Plasmodium apicoplast methylerythritol phosphate (MEP) isoprenoid biosynthesis pathway. Blocking this essential pathway disrupts membrane synthesis and apicoplast function, leading to parasite death. It has a novel target with no cross-resistance to existing antimalarials but has short half-life requiring combination therapy.', 'Jomaa H et al. Science, 1999, 285(5433): 1573-1576').
 full_moa_detail(fosmidomycin, chembl, 'DXR inhibitor; MEP pathway blocker; apicoplast-targeting antimalarial', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(fosmidomycin, ring_stage, weak_bactericidal).
-drug_stage_effect(fosmidomycin, trophozoite, moderate_bactericidal).
-drug_stage_effect(fosmidomycin, schizont, strong_bactericidal).
+drug_stage_effect(fosmidomycin, ring_stage, weak_plasmodicidal).
+drug_stage_effect(fosmidomycin, trophozoite, moderate_plasmodicidal).
+drug_stage_effect(fosmidomycin, schizont, strong_plasmodicidal).
 drug_stage_effect(fosmidomycin, hypnozoite, no_effect).
 drug_stage_effect(fosmidomycin, gametocyte, weak_inhibit).
 drug_combination_type(fosmidomycin, investigational).
@@ -1873,7 +1879,7 @@ drug_attr(arterolane, modality, 'Small molecule').
 drug_class(arterolane, review, '1,2,4-Trioxolane').
 drug_class(arterolane, cn, 'Synthetic peroxides').
 drug_class(arterolane, atc, 'None (not marketed/no ATC code)').
-drug_core_structure(arterolane, '1,2,4-Trioxolane synthetic endoperoxide', 'Antimicrob Agents Chemother, 2010, 54(11): 4868-4875').
+drug_core_structure(arterolane, '1,2,4-Trioxolane synthetic endoperoxide', '1,2,4-Trioxolane synthetic endoperoxide core scaffold', 'Antimicrob Agents Chemother, 2010, 54(11): 4868-4875').
 malaria_line_usage(arterolane, 'Plasmodium falciparum', investigational, 'Phase III synthetic endoperoxide; marketed in India as Synriam combination', 'Antimicrob Agents Chemother, 2010, 54(11): 4868-4875').
 malaria_line_usage(arterolane, 'Plasmodium vivax', second_line, 'Approved in combination with piperaquine for vivax malaria in some regions', 'Malar J, 2018, 17(1): 189').
 malaria_line_usage(arterolane, 'Plasmodium ovale', not_evaluated, 'No published efficacy data', 'Limited clinical data').
@@ -1882,9 +1888,9 @@ drug_synergy(arterolane, piperaquine, 'Fixed-dose combination (Synriam) approved
 drug_synergy(arterolane, primaquine, 'Combination used for radical cure of vivax malaria in regional practice', 'Antimicrob Agents Chemother, 2010, 54(11): 4868-4875').
 full_moa_detail(arterolane, review, 'Arterolane is a fully synthetic trioxolane endoperoxide antimalarial. Its endoperoxide bridge is cleaved by ferrous heme in the parasite digestive vacuole, generating reactive oxygen species and carbon-centered radicals that alkylate parasite proteins and inhibit PfATP6 calcium ATPase. It exhibits fast-acting blood schizonticidal activity against both chloroquine-sensitive and resistant P. falciparum strains, with a longer half-life than natural artemisinins.', 'Vennerstrom JL et al. J Med Chem, 2004, 47(11): 2821-2828').
 full_moa_detail(arterolane, chembl, 'Synthetic endoperoxide; heme-activated free radical generator; blood schizonticide', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(arterolane, ring_stage, strong_bactericidal).
-drug_stage_effect(arterolane, trophozoite, strong_bactericidal).
-drug_stage_effect(arterolane, schizont, moderate_bactericidal).
+drug_stage_effect(arterolane, ring_stage, strong_plasmodicidal).
+drug_stage_effect(arterolane, trophozoite, strong_plasmodicidal).
+drug_stage_effect(arterolane, schizont, moderate_plasmodicidal).
 drug_stage_effect(arterolane, hypnozoite, no_effect).
 drug_stage_effect(arterolane, gametocyte, moderate_inhibit).
 drug_combination_type(arterolane, 'Synriam').
@@ -1930,7 +1936,7 @@ drug_attr(artemisinin, action_type, 'INHIBITOR').
 drug_class(artemisinin, review, 'Artemisinin').
 drug_class(artemisinin, cn, 'Artemisinins').
 drug_class(artemisinin, atc, 'Artemisinin and derivatives, plain (P01BE)').
-drug_core_structure(artemisinin, '1,2,4-Trioxane endoperoxide sesquiterpene lactone', 'Nature, 2014, 505(7481): 50-55; Cell Res, 2016, 26(1): 9-10').
+drug_core_structure(artemisinin, '1,2,4-Trioxane endoperoxide sesquiterpene lactone', '1,2,4-Trioxane endoperoxide sesquiterpene lactone core scaffold', 'Nature, 2014, 505(7481): 50-55; Cell Res, 2016, 26(1): 9-10').
 malaria_line_usage(artemisinin, 'Plasmodium falciparum', first_line, 'Parent compound of all artemisinin derivatives; core of ACT regimens; monotherapy prohibited by WHO', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(artemisinin, 'Plasmodium vivax', first_line, 'First-line blood schizonticide; combined with primaquine for radical cure', 'N Engl J Med, 2019, 380(11): 1027-1038').
 malaria_line_usage(artemisinin, 'Plasmodium ovale', first_line, 'Rapidly clears erythrocytic stages; primaquine required for radical cure', 'Clin Microbiol Rev, 2013, 26(1): 60-79').
@@ -1939,9 +1945,9 @@ drug_synergy(artemisinin, piperaquine, 'Standard ACT combination (Duo-Cotecxin) 
 drug_synergy(artemisinin, primaquine, 'Artemisinin clears blood-stage parasites; primaquine eliminates hypnozoites and gametocytes', 'Lancet Infect Dis, 2020, 20(12): e363-e374').
 full_moa_detail(artemisinin, review, 'Artemisinin is a natural sesquiterpene lactone endoperoxide isolated from Artemisia annua. Its endoperoxide bridge is reduced by ferrous heme in the parasite digestive vacuole, generating highly reactive carbon-centered free radicals that alkylate hundreds of parasite proteins, lipids and DNA. This multi-target damage disrupts calcium homeostasis (via PfATP6), protein folding, membrane integrity and energy metabolism, causing rapid parasite death. It is the fastest-acting antimalarial class available.', 'Tu Y. Cell Res, 2016, 26(1): 9-10').
 full_moa_detail(artemisinin, chembl, 'Natural endoperoxide antimalarial; heme-activated multi-target alkylator; fast-acting schizonticide', 'ChEMBL Database Release 33, 2025').
-drug_stage_effect(artemisinin, ring_stage, strong_bactericidal).
-drug_stage_effect(artemisinin, trophozoite, strong_bactericidal).
-drug_stage_effect(artemisinin, schizont, moderate_bactericidal).
+drug_stage_effect(artemisinin, ring_stage, strong_plasmodicidal).
+drug_stage_effect(artemisinin, trophozoite, strong_plasmodicidal).
+drug_stage_effect(artemisinin, schizont, moderate_plasmodicidal).
 drug_stage_effect(artemisinin, hypnozoite, no_effect).
 drug_stage_effect(artemisinin, gametocyte, moderate_inhibit).
 drug_combination_type(artemisinin, 'Duo-Cotecxin').
@@ -1987,7 +1993,7 @@ drug_class(amodiaquine, review, '4-Aminoquinoline').
 drug_class(amodiaquine, cn, 'Quinolines').
 drug_class(amodiaquine, atc, 'Aminoquinolines (P01BA)').
 % 1. 药物母核结构
-drug_core_structure(amodiaquine, '4-Aminoquinoline', 'WHO World Malaria Report 2023; PNAS, 2009, 106(45): 18883-18889').
+drug_core_structure(amodiaquine, '4-Aminoquinoline', '4-Aminoquinoline core scaffold', 'WHO World Malaria Report 2023; PNAS, 2009, 106(45): 18883-18889').
 % 2. 不同疟原虫的用药线级划分
 malaria_line_usage(amodiaquine, 'Plasmodium falciparum', first_line, 'First-line ACT partner drug (artesunate-amodiaquine) in West Africa; better activity than chloroquine in resistant areas', 'WHO Guidelines for the treatment of malaria, 4th ed, 2021').
 malaria_line_usage(amodiaquine, 'Plasmodium vivax', second_line, 'Second-line blood schizonticide; combined with primaquine for radical cure', 'Clin Infect Dis, 2020, 71(Suppl 3): S224-S231').
@@ -2000,9 +2006,9 @@ drug_synergy(amodiaquine, sulfadoxine_pyrimethamine, 'Seasonal malaria chemoprev
 full_moa_detail(amodiaquine, review, 'Amodiaquine is a 4-aminoquinoline mannich base that accumulates in the Plasmodium digestive vacuole and inhibits hemozoin crystallization via heme binding. Its active metabolite desethylamodiaquine contributes most of the in vivo antimalarial activity. It retains partial activity against many chloroquine-resistant PfCRT mutant strains because it is less efficiently recognized and effluxed by the mutant transporter, though high-level chloroquine resistance still reduces efficacy.', 'Sa JM et al. PNAS, 2009, 106(45): 18883-18889').
 full_moa_detail(amodiaquine, chembl, 'Hemozoin formation inhibitor; 4-aminoquinoline prodrug; desethylamodiaquine is active metabolite', 'ChEMBL Database Release 33, 2025').
 % 5. 疟原虫各发育阶段杀伤活性
-drug_stage_effect(amodiaquine, ring_stage, weak_bactericidal).
-drug_stage_effect(amodiaquine, trophozoite, strong_bactericidal).
-drug_stage_effect(amodiaquine, schizont, strong_bactericidal).
+drug_stage_effect(amodiaquine, ring_stage, weak_plasmodicidal).
+drug_stage_effect(amodiaquine, trophozoite, strong_plasmodicidal).
+drug_stage_effect(amodiaquine, schizont, strong_plasmodicidal).
 drug_stage_effect(amodiaquine, hypnozoite, no_effect).
 drug_stage_effect(amodiaquine, gametocyte, weak_inhibit).
 % 6. 复方制剂归属
